@@ -6,15 +6,15 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:08:41 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 17:56:35 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/07 11:11:43 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_map_coord	ft_new_map_coord(void)
+t_coord	ft_new_coord(void)
 {
-	t_map_coord	map_coord;
+	t_coord	map_coord;
 
 	map_coord.x = 0;
 	map_coord.y = 0;

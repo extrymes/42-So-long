@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 18:06:45 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/07 10:15:19 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_check_path(char **map, int x, int y);
 
 int	ft_check_map(char **map)
 {
-	t_map_coord	start_coord;
+	t_coord	start_coord;
 
 	if (!ft_check_shape(map))
 		return (ft_putstr("Error\nBad map shape"), 0);

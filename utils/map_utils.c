@@ -6,14 +6,15 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 17:57:34 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/07 11:12:28 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../includes/libft.h"
 
-static t_map_coord	ft_fetch_start(char **map);
-static t_map_coord	ft_fetch_exit(char **map);
+static t_coord	ft_fetch_start(char **map);
+static t_coord	ft_fetch_exit(char **map);
 static int			ft_count_collectibles(char **map);
 
 t_map_data	ft_get_map_data(char **map)
@@ -26,13 +27,13 @@ t_map_data	ft_get_map_data(char **map)
 	return (map_data);
 }
 
-t_map_coord	ft_fetch_start(char **map)
+static t_coord	ft_fetch_start(char **map)
 {
-	t_map_coord	map_coord;
-	int			x;
-	int			y;
+	t_coord	pos;
+	int		x;
+	int		y;
 
-	map_coord = ft_new_map_coord();
+	pos = ft_new_coord();
 	y = 0;
 	while (map[y])
 	{
@@ -41,24 +42,24 @@ t_map_coord	ft_fetch_start(char **map)
 		{
 			if (map[y][x] == 'P')
 			{
-				map_coord.x = x;
-				map_coord.y = y;
-				return (map_coord);
+				pos.x = x;
+				pos.y = y;
+				return (pos);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (map_coord);
+	return (pos);
 }
 
-t_map_coord	ft_fetch_exit(char **map)
+static t_coord	ft_fetch_exit(char **map)
 {
-	t_map_coord	map_coord;
-	int			x;
-	int			y;
+	t_coord	pos;
+	int		x;
+	int		y;
 
-	map_coord = ft_new_map_coord();
+	pos = ft_new_coord();
 	y = 0;
 	while (map[y])
 	{
@@ -67,18 +68,18 @@ t_map_coord	ft_fetch_exit(char **map)
 		{
 			if (map[y][x] == 'E')
 			{
-				map_coord.x = x;
-				map_coord.y = y;
-				return (map_coord);
+				pos.x = x;
+				pos.y = y;
+				return (pos);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (map_coord);
+	return (pos);
 }
 
-int	ft_count_collectibles(char **map)
+static int	ft_count_collectibles(char **map)
 {
 	int	collectibles;
 	int	x;
