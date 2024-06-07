@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/07 11:12:28 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/07 11:41:40 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static t_coord	ft_fetch_start(char **map);
 static t_coord	ft_fetch_exit(char **map);
-static int			ft_count_collectibles(char **map);
+static int		ft_count_collectibles(char **map);
 
 t_map_data	ft_get_map_data(char **map)
 {

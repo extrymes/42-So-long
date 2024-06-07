@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:14:13 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 18:39:19 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/07 09:10:15 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static int	ft_check_file(char *file)
 	i = ft_strlen(file);
 	if (i < 5)
 		return (0);
-	if (file[i - 4] != '.' || file[i - 3] != 'b' ||
-		(file[i - 2] != 'e' || file[i - 1] != 'r'))
+	if (file[i - 4] != '.' || file[i - 3] != 'b'
+		|| (file[i - 2] != 'e' || file[i - 1] != 'r'))
 		return (ft_putstr("Error\nInvalid file extension"), 0);
 	return (1);
 }
