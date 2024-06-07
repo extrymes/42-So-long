@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:16:46 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 15:12:17 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/07 10:19:54 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
+char	*ft_strdup(char *src);
 
 // Get next line
 char	*get_next_line(int fd);
