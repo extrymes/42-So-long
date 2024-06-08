@@ -35,7 +35,7 @@ $(LIBFT):
 	@echo "$(GREEN)Libft successfully built!$(RESET)"
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) -o $(NAME) $^ $(LIBFT)
+	@$(CC) -o $(NAME) $^
 	@echo "$(GREEN)Executable $(NAME) created successfully!$(RESET)"
 
 clean:
