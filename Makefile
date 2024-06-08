@@ -17,6 +17,7 @@ LIBFT = $(addprefix $(LIBFT_DIR)/,$(LIBFT_FILE))
 CFLAGS = -Wall -Wextra -Werror
 CC = cc $(CFLAGS) -I $(HDR_DIR)
 
+GRAY = \033[30m
 RED = \033[31m
 GREEN = \033[32m
 YELLOW = \033[33m
@@ -25,18 +26,18 @@ RESET = \033[0m
 
 %.o: %.c
 	@$(CC) -c $< -o $@
-	@echo "$(GREEN)Compiled: $<$(RESET)"
+	@echo "$(GRAY)Compiled: $<$(RESET)"
 
 all: $(NAME)
 
 $(LIBFT):
 	@echo "$(YELLOW)Building libft..$(RESET)"
 	@make --no-print-directory -C $(LIBFT_DIR)
-	@echo "$(GREEN)Libft successfully built!$(RESET)"
+	@echo "$(GREEN)Library $(LIBFT_FILE) successfully built!$(RESET)"
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) -o $(NAME) $^
-	@echo "$(GREEN)Executable $(NAME) created successfully!$(RESET)"
+	@echo "$(GREEN)Executable $(NAME) successfully created!$(RESET)"
 
 clean:
 	@echo "$(BLUE)Cleaning object files...$(RESET)"
