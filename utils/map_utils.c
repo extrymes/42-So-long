@@ -6,97 +6,39 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/07 11:41:40 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 02:22:52 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/libft.h"
 
-static t_coord	ft_fetch_start(char **map);
-static t_coord	ft_fetch_exit(char **map);
-static int		ft_count_collectibles(char **map);
-
-t_map_data	ft_get_map_data(char **map)
+void	ft_browse_map(char **map, t_map_path *path, int x, int y)
 {
-	t_map_data	map_data;
-
-	map_data.start_pos = ft_fetch_start(map);
-	map_data.exit_pos = ft_fetch_exit(map);
-	map_data.collectibles = ft_count_collectibles(map);
-	return (map_data);
+	if (map[y][x] == '1')
+		return ;
+	if (map[y][x] == 'P')
+		path->start = 1;
+	else if (map[y][x] == 'E')
+		path->exit = 1;
+	else if (map[y][x] == 'C')
+		path->collectibles++;
+	map[y][x] = '1';
+	ft_browse_map(map, path, x, y + 1);
+	ft_browse_map(map, path, x, y - 1);
+	ft_browse_map(map, path, x - 1, y);
+	ft_browse_map(map, path, x + 1, y);
 }
 
-static t_coord	ft_fetch_start(char **map)
+void	ft_free_map(char ***map)
 {
-	t_coord	pos;
-	int		x;
-	int		y;
+	int	i;
 
-	pos = ft_new_coord();
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == 'P')
-			{
-				pos.x = x;
-				pos.y = y;
-				return (pos);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (pos);
-}
-
-static t_coord	ft_fetch_exit(char **map)
-{
-	t_coord	pos;
-	int		x;
-	int		y;
-
-	pos = ft_new_coord();
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == 'E')
-			{
-				pos.x = x;
-				pos.y = y;
-				return (pos);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (pos);
-}
-
-static int	ft_count_collectibles(char **map)
-{
-	int	collectibles;
-	int	x;
-	int	y;
-
-	collectibles = 0;
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == 'C')
-				collectibles++;
-			x++;
-		}
-		y++;
-	}
-	return (collectibles);
+	i = 0;
+	while ((*map)[i])
+		i++;
+	while (i >= 0)
+		free((*map)[i--]);
+	free(*map);
+	*map = NULL;
 }
