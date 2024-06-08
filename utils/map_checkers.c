@@ -18,17 +18,24 @@ static int	ft_check_borders(char **map);
 static int	ft_check_objects(char **map);
 static void	ft_check_path(char **map, int x, int y);
 
-int	ft_check_map(char **map)
+int	ft_check_map(char **map, t_map_data *data)
 {
-	t_coord	start_coord;
+	t_map_path	path;
 
 	if (!ft_check_shape(map))
 		return (ft_putstr("Error\nBad map shape"), 0);
 	if (!ft_check_borders(map))
 		return (ft_putstr("Error\nMissing map border"), 0);
-	if (!ft_check_objects(map))
-		return (ft_putstr("Error\nDuplicate start/exit or missing collectible"), 0);
-	ft_check_path(map, start_coord.x, start_coord.y);
+	if (!ft_check_start_exit(map))
+		return (ft_putstr("Error\nDuplicate or missing start/exit"), 0);
+	*data = ft_get_map_data(map);
+	if (data->collectibles == 0)
+		return (ft_putstr("Error\nMissing collectible(s)"), 0);
+	path = ft_new_path();
+	ft_browse_map(map, &path, data->start_pos.x, data->exit_pos.y);
+	if (path.start != 1 || path.exit != 1
+		|| (path.collectibles != data->collectibles))
+		return (ft_putstr("Error\nInvalid map path"), 0);
 	return (1);
 }
 

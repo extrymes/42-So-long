@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:02:00 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 17:46:11 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 02:14:38 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 	map = ft_read_map(av[1]);
 	if (!map)
 		return (1);
-	map_data = ft_get_map_data(map);
+	if (!ft_check_map(map, &map_data))
+		return (1);
 	return (0);
 }
