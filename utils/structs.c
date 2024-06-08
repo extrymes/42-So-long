@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:08:41 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/07 11:11:43 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 02:05:35 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,29 @@
 
 t_coord	ft_new_coord(void)
 {
-	t_coord	map_coord;
+	t_coord	pos;
 
-	map_coord.x = 0;
-	map_coord.y = 0;
-	return (map_coord);
+	pos.x = 0;
+	pos.y = 0;
+	return (pos);
 }
 
-t_map_objs	ft_new_map_objs(void)
+t_map_path	ft_new_path(void)
 {
-	t_map_objs	map_objs;
+	t_map_path	path;
 
-	map_objs.starts = 0;
-	map_objs.exits = 0;
-	map_objs.collectibles = 0;
-	return (map_objs);
+	path.start = 0;
+	path.exit = 0;
+	path.collectibles = 0;
+	return (path);
+}
+
+t_player	ft_new_player(void)
+{
+	t_player	player;
+
+	player.pos.x = 0;
+	player.pos.y = 0;
+	player.points = 0;
+	return (player);
 }
