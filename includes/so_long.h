@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/07 11:11:43 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 02:13:12 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,35 @@ typedef struct s_map_data
 	int		collectibles;
 }	t_map_data;
 
-typedef struct s_map_objs
+typedef struct s_map_path
 {
-	int	starts;
-	int	exits;
+	int	start;
+	int	exit;
 	int	collectibles;
-}	t_map_objs;
+}	t_map_path;
 
-char		**ft_read_map(char *file);
+typedef struct s_player
+{
+	t_coord	pos;
+	int		points;
+}	t_player;
+
+// Map data
 t_map_data	ft_get_map_data(char **map);
-t_coord	ft_new_coord(void);
-t_map_objs	ft_new_map_objs(void);
-int			ft_check_map(char **map);
+
+// Map reader
+char		**ft_read_map(char *file);
+
+// Map chechers
+int			ft_check_map(char **map, t_map_data *map_data);
+
+// Map utils
+void		ft_browse_map(char **map, t_map_path *path, int x, int y);
+void		ft_free_map(char ***map);
+
+// Structs
+t_coord		ft_new_coord(void);
+t_map_path	ft_new_path(void);
+t_player	ft_new_player(void);
 
 #endif
