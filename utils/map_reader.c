@@ -35,6 +35,29 @@ char	**ft_read_map(char *file)
 	return (map);
 }
 
+static char	**ft_realloc_map(char **map, int size)
+{
+	char	**new_map;
+	int		i;
+
+	new_map = malloc((size + 1) * sizeof(char *));
+	if (!new_map)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		new_map[i] = ft_strdup(map[i]);
+		if (!new_map[i++])
+			return (NULL);
+	}
+	i = 0;
+	while (i < size)
+		free(map[i++]);
+	free(map);
+	map = NULL;
+	return (new_map);
+}
+
 static int	ft_check_file(char *file)
 {
 	int	i;
