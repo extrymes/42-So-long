@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/07 10:15:19 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 02:19:13 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 static int	ft_check_shape(char **map);
 static int	ft_check_borders(char **map);
-static int	ft_check_objects(char **map);
-static void	ft_check_path(char **map, int x, int y);
+static int	ft_check_start_exit(char **map);
 
 int	ft_check_map(char **map, t_map_data *data)
 {
@@ -37,17 +36,6 @@ int	ft_check_map(char **map, t_map_data *data)
 		|| (path.collectibles != data->collectibles))
 		return (ft_putstr("Error\nInvalid map path"), 0);
 	return (1);
-}
-
-void	ft_check_path(char **map, int x, int y)
-{
-	if (map[y][x] == '1')
-		return ;
-	map[y][x] = '1';
-	ft_check_path(map, x, y + 1);
-	ft_check_path(map, x, y - 1);
-	ft_check_path(map, x - 1, y);
-	ft_check_path(map, x + 1, y);
 }
 
 static int	ft_check_shape(char **map)
@@ -98,13 +86,15 @@ static int	ft_check_borders(char **map)
 	return (1);
 }
 
-static int	ft_check_objects(char **map)
+static int	ft_check_start_exit(char **map)
 {
-	t_map_objs	map_objs;
-	int			x;
-	int			y;
+	int	starts;
+	int	exits;
+	int	x;
+	int	y;
 
-	map_objs = ft_new_map_objs();
+	starts = 0;
+	exits = 0;
 	y = 0;
 	while (map[y])
 	{
@@ -112,16 +102,14 @@ static int	ft_check_objects(char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == 'P')
-				map_objs.starts++;
+				starts++;
 			if (map[y][x] == 'E')
-				map_objs.exits++;
-			if (map[y][x] == 'C')
-				map_objs.collectibles++;
+				exits++;
 			x++;
 		}
 		y++;
 	}
-	if (map_objs.starts != 1 || map_objs.exits != 1 || map_objs.collectibles == 0)
+	if (starts != 1 || exits != 1)
 		return (0);
 	return (1);
 }
