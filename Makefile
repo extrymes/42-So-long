@@ -3,7 +3,7 @@ NAME = so_long
 SRCS = 	so_long.c
 
 UTIL_DIR = utils
-UTIL_FILES = structs.c map_reader.c map_checkers.c map_utils.c
+UTIL_FILES = map_data.c map_reader.c map_checkers.c map_utils.c structs.c
 UTIL_SRCS = $(addprefix $(UTIL_DIR)/,$(UTIL_FILES))
 
 OBJS = $(SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
@@ -17,24 +17,38 @@ LIBFT = $(addprefix $(LIBFT_DIR)/,$(LIBFT_FILE))
 CFLAGS = -Wall -Wextra -Werror
 CC = cc $(CFLAGS) -I $(HDR_DIR)
 
+RED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+RESET = \033[0m
+
 %.o: %.c
-	$(CC) -c $< -o $@
+	@$(CC) -c $< -o $@
+	@echo "$(GREEN)Compiled: $<$(RESET)"
 
 all: $(NAME)
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@echo "$(YELLOW)Building libft..$(RESET)"
+	@make --no-print-directory -C $(LIBFT_DIR)
+	@echo "$(GREEN)Libft successfully built!$(RESET)"
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) -o $(NAME) $^ $(LIBFT)
+	@$(CC) -o $(NAME) $^ $(LIBFT)
+	@echo "$(GREEN)Executable $(NAME) created successfully!$(RESET)"
 
 clean:
-	rm -f $(OBJS)
-	make -C $(LIBFT_DIR) clean
+	@echo "$(BLUE)Cleaning object files...$(RESET)"
+	@rm -f $(OBJS)
+	@make --no-print-directory -C $(LIBFT_DIR) clean
+	@echo "$(GREEN)Cleaning complete!$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	@echo "$(BLUE)Complete cleanup, delete $(NAME)...$(RESET)"
+	@rm -f $(NAME)
+	@make --no-print-directory -C $(LIBFT_DIR) fclean
+	@echo "$(GREEN)Cleaning complete!$(RESET)"
 
 re: fclean all
 
