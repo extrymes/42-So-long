@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/08 02:19:13 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 12:34:25 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 static int	ft_check_shape(char **map);
 static int	ft_check_borders(char **map);
 static int	ft_check_start_exit(char **map);
+static int	ft_check_path(char **map, char ***map_copy);
 
 int	ft_check_map(char **map, t_map_data *data)
 {
-	t_map_path	path;
+	char		**map_copy;
 
 	if (!ft_check_shape(map))
 		return (ft_putstr("Error\nBad map shape"), 0);
@@ -30,10 +31,11 @@ int	ft_check_map(char **map, t_map_data *data)
 	*data = ft_get_map_data(map);
 	if (data->collectibles == 0)
 		return (ft_putstr("Error\nMissing collectible(s)"), 0);
-	path = ft_new_path();
-	ft_browse_map(map, &path, data->start_pos.x, data->exit_pos.y);
-	if (path.start != 1 || path.exit != 1
-		|| (path.collectibles != data->collectibles))
+	map_copy = ft_copy_map(map);
+	if (!map_copy)
+		return (ft_putstr("Allocation fail"), 0);
+	ft_browse_map(map_copy, data->start_pos.x, data->exit_pos.y);
+	if (!ft_check_path(map, &map_copy))
 		return (ft_putstr("Error\nInvalid map path"), 0);
 	return (1);
 }
@@ -112,4 +114,25 @@ static int	ft_check_start_exit(char **map)
 	if (starts != 1 || exits != 1)
 		return (0);
 	return (1);
+}
+
+static int	ft_check_path(char **map, char ***map_copy)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if ((map[y][x] == 'P' || map[y][x] == 'E' || map[y][x] == 'C')
+				&& ((*map_copy)[y][x] != '1'))
+				return (ft_free_map(map_copy), 0);
+			x++;
+		}
+		y++;
+	}
+	return (ft_free_map(map_copy), 1);
 }

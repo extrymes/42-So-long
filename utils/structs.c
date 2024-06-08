@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:08:41 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/08 02:05:35 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 12:36:51 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,6 @@ t_coord	ft_new_coord(void)
 	pos.x = 0;
 	pos.y = 0;
 	return (pos);
-}
-
-t_map_path	ft_new_path(void)
-{
-	t_map_path	path;
-
-	path.start = 0;
-	path.exit = 0;
-	path.collectibles = 0;
-	return (path);
 }
 
 t_player	ft_new_player(void)

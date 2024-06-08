@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/08 02:13:12 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/08 12:37:04 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ typedef struct s_map_data
 	int		collectibles;
 }	t_map_data;
 
-typedef struct s_map_path
-{
-	int	start;
-	int	exit;
-	int	collectibles;
-}	t_map_path;
-
 typedef struct s_player
 {
 	t_coord	pos;
@@ -50,12 +43,12 @@ char		**ft_read_map(char *file);
 int			ft_check_map(char **map, t_map_data *map_data);
 
 // Map utils
-void		ft_browse_map(char **map, t_map_path *path, int x, int y);
+char		**ft_copy_map(char **map);
+void		ft_browse_map(char **map, int x, int y);
 void		ft_free_map(char ***map);
 
 // Structs
 t_coord		ft_new_coord(void);
-t_map_path	ft_new_path(void);
 t_player	ft_new_player(void);
 
 #endif
