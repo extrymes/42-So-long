@@ -10,6 +10,9 @@ OBJS = $(SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
 
 HDR_DIR = includes
 
+MINILIBX_DIR = /home/sabras/sgoinfre/minilibx
+MINILIBX_FLAGS = -L$(MINILIBX_DIR) -lmlx -lXext -lX11
+
 LIBFT_DIR = libft
 LIBFT_FILE = libft.a
 LIBFT = $(addprefix $(LIBFT_DIR)/,$(LIBFT_FILE))
@@ -36,7 +39,7 @@ $(LIBFT):
 	@echo "$(GREEN)Library $(LIBFT_FILE) successfully built!$(RESET)"
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) -o $(NAME) $^
+	@$(CC) -o $(NAME) $^ $(MINILIBX_FLAGS)
 	@echo "$(GREEN)Executable $(NAME) successfully created!$(RESET)"
 
 clean:
