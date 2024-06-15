@@ -2,11 +2,15 @@ NAME = so_long
 
 SRCS = 	so_long.c
 
+UI_DIR = ui
+UI_FILES = window.c map.c
+UI_SRCS = $(addprefix $(UI_DIR)/,$(UI_FILES))
+
 UTIL_DIR = utils
-UTIL_FILES = map_data.c map_reader.c map_checkers.c map_utils.c structs.c
+UTIL_FILES = map_data.c map_reader.c map_checkers.c map_utils.c events.c structs.c utils.c
 UTIL_SRCS = $(addprefix $(UTIL_DIR)/,$(UTIL_FILES))
 
-OBJS = $(SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o) $(UI_SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
 
 HDR_DIR = includes
 

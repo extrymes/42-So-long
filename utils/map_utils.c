@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/08 12:32:36 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 00:38:25 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,14 @@ void	ft_browse_map(char **map, int x, int y)
 	ft_browse_map(map, x + 1, y);
 }
 
-void	ft_free_map(char ***map)
+void	ft_free_map(char **map)
 {
 	int	i;
 
 	i = 0;
-	while ((*map)[i])
+	while (map[i])
 		i++;
 	while (i >= 0)
-		free((*map)[i--]);
-	free(*map);
-	*map = NULL;
+		free(map[i--]);
+	free(map);
 }

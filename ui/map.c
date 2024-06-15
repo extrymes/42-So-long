@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 17:08:41 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/15 22:00:26 by sabras           ###   ########.fr       */
+/*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
+/*   Updated: 2024/06/16 01:31:26 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../includes/colors.h"
+#include <stdio.h>
 
-t_coord	ft_new_coord(void)
+void	ft_draw_map(char **map, t_game_data game)
 {
-	t_coord	pos;
+	int		x;
+	int		y;
 
-	pos.x = 0;
-	pos.y = 0;
-	return (pos);
-}
-
-t_map_objs	ft_new_objs(void)
-{
-	t_map_objs	objs;
-
-	objs.starts = 0;
-	objs.exits = 0;
-	objs.others = 0;
-	return (objs);
-}
-
-t_player	ft_new_player(void)
-{
-	t_player	player;
-
-	player.pos.x = 0;
-	player.pos.y = 0;
-	player.points = 0;
-	return (player);
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '0')
+				mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
+					game.space_img.ptr, x, y);
+			if (map[y][x] == '1')
+				mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
+					game.wall_img.ptr, x, y);
+			x++;
+		}
+		y++;
+	}
 }

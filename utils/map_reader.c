@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:14:13 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/08 02:06:48 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/15 22:39:01 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_read_map(char *file)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (ft_putstr("Error\nUnable to read file"), NULL);
+		return (ft_print_error("Unable to read file"), NULL);
 	map = malloc(1);
 	i = 0;
 	while (1)
@@ -71,13 +71,13 @@ static int	ft_check_file(char *file)
 	int	len;
 
 	if (!file)
-		return (ft_putstr("Error\nFile does not exist"), 0);
+		return (ft_print_error("File does not exist"), 0);
 	len = ft_strlen(file);
 	if (len < 5)
 		return (0);
 	if (file[len - 4] != '.' || file[len - 3] != 'b'
 		|| (file[len - 2] != 'e' || file[len - 1] != 'r'))
-		return (ft_putstr("Error\nInvalid file extension"), 0);
+		return (ft_print_error("Invalid file extension"), 0);
 	return (1);
 }
 
