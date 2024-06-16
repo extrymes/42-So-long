@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 01:38:33 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 14:27:26 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_map_data	ft_get_map_data(char **map);
 char		**ft_read_map(char *file);
 
 // Map chechers
-int			ft_check_map(char **map, t_map_data *map_data);
+int			ft_check_map(char **map, t_map_data map_data);
 
 // Map utils
 char		**ft_copy_map(char **map);

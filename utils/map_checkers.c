@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 00:32:58 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 14:27:47 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_check_borders(char **map);
 static int	ft_check_objects(char **map);
 static int	ft_check_path(char **map, char **map_copy);
 
-int	ft_check_map(char **map, t_map_data *data)
+int	ft_check_map(char **map, t_map_data data)
 {
 	char		**map_copy;
 
@@ -27,13 +27,12 @@ int	ft_check_map(char **map, t_map_data *data)
 		return (ft_print_error("Missing map border"), 0);
 	if (!ft_check_objects(map))
 		return (ft_print_error("Bad map objects"), 0);
-	*data = ft_get_map_data(map);
-	if (data->collectibles == 0)
+	if (data.collectibles == 0)
 		return (ft_print_error("Missing collectible(s)"), 0);
 	map_copy = ft_copy_map(map);
 	if (!map_copy)
 		return (ft_print_error("Allocation fail"), 0);
-	ft_browse_map(map_copy, data->start_pos.x, data->exit_pos.y);
+	ft_browse_map(map_copy, data.start_pos.x, data.exit_pos.y);
 	if (!ft_check_path(map, map_copy))
 		return (ft_print_error("Invalid map path"), 0);
 	return (1);
