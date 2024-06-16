@@ -19,6 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_print_error("Invalid argument"), 1);
+	game = ft_init_game();
 	game.map = ft_read_map(av[1]);
 	if (!game.map)
 		return (1);

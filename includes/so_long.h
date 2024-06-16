@@ -98,6 +98,7 @@ void		ft_handle_events(t_game_data game);
 void		ft_player_move(int keysim, t_player *player);
 
 // Structs
+t_game_data	ft_init_game(void);
 t_coord		ft_new_coord(void);
 t_map_objs	ft_new_objs(void);
 t_player	ft_new_player(void);

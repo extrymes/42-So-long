@@ -6,11 +6,26 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:08:41 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/15 22:00:26 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 14:18:58 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+t_game_data	ft_init_game(void)
+{
+	t_game_data	game;
+
+	game.map = NULL;
+	game.mlx_ptr = NULL;
+	game.win_ptr = NULL;
+	game.player_img.ptr = NULL;
+	game.exit_img.ptr = NULL;
+	game.collec_img.ptr = NULL;
+	game.wall_img.ptr = NULL;
+	game.space_img.ptr = NULL;
+	return (game);
+}
 
 t_coord	ft_new_coord(void)
 {
