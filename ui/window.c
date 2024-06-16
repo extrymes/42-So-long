@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 01:31:19 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 14:07:15 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static void			ft_calculate_win_size(char **map, t_game_data *game);
 static t_img_data	ft_load_image(t_game_data game, char *filename);
+static void			ft_free_images(t_game_data game);
 
 void	ft_new_window(char **map, t_game_data *game)
 {
@@ -60,10 +61,30 @@ static void	ft_calculate_win_size(char **map, t_game_data *game)
 	while (map[i++])
 		game->win_height += SPRITE_SIZE;
 }
+static void	ft_free_images(t_game_data game)
+{
+	if (game.player_img.ptr)
+		free(game.player_img.ptr);
+	if (game.exit_img.ptr)
+		free(game.exit_img.ptr);
+	if (game.collec_img.ptr)
+		free(game.collec_img.ptr);
+	if (game.wall_img.ptr)
+		free(game.wall_img.ptr);
+	if (game.space_img.ptr)
+		free(game.space_img.ptr);
+}
 
 void	ft_destroy_game(t_game_data game)
 {
-	mlx_destroy_window(game.mlx_ptr, game.win_ptr);
-	ft_free_map(game.map);
+	ft_free_images(game);
+	if (game.mlx_ptr && game.win_ptr)
+	{
+		mlx_destroy_window(game.mlx_ptr, game.win_ptr);
+		free(game.win_ptr);
+		free(game.mlx_ptr);
+	}
+	if (game.map)
+		ft_free_map(game.map);
 	exit(0);
 }
