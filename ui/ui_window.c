@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 15:20:51 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:55:31 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	ft_new_window(char **map, t_game_data *game)
 		ft_print_error("Failed to create window");
 		ft_destroy_game(*game);
 	}
+	game->floor_img = ft_load_image(*game, FLOOR_PATH);
+	game->wall_img = ft_load_image(*game, WALL_PATH);
+	game->collec_img = ft_load_image(*game, COLLEC_PATH);
 	game->player_img = ft_load_image(*game, PLAYER_PATH);
 	game->exit_img = ft_load_image(*game, EXIT_PATH);
-	game->collec_img = ft_load_image(*game, COLLEC_PATH);
-	game->wall_img = ft_load_image(*game, WALL_PATH);
-	game->space_img = ft_load_image(*game, SPACE_PATH);
 }
 
 static void	ft_calculate_win_size(char **map, t_game_data *game)

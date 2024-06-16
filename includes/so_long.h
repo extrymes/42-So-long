@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 15:38:27 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:56:41 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define SO_LONG_H
 # define WIN_TITLE "42-So-long"
 # define SPRITE_SIZE 32
+# define FLOOR_PATH "textures/floor.xpm"
+# define WALL_PATH "textures/box.xpm"
+# define COLLEC_PATH "textures/apple.xpm"
 # define PLAYER_PATH "textures/player.xpm"
 # define EXIT_PATH "textures/portal.xpm"
-# define COLLEC_PATH "textures/cristal1.xpm"
-# define WALL_PATH "textures/wall.xpm"
-# define SPACE_PATH "textures/space.xpm"
 # include </home/sabras/sgoinfre/minilibx/mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -65,11 +65,11 @@ typedef struct s_game_data {
 	int			win_width;
 	int			win_height;
 	t_player	player;
+	t_img_data	floor_img;
+	t_img_data	wall_img;
+	t_img_data	collec_img;
 	t_img_data	player_img;
 	t_img_data	exit_img;
-	t_img_data	collec_img;
-	t_img_data	wall_img;
-	t_img_data	space_img;
 }	t_game_data;
 
 typedef struct s_move_keys {

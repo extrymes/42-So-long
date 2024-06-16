@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:23:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 15:25:00 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:56:26 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_game_data	ft_init_game(void)
 	game.map = NULL;
 	game.mlx_ptr = NULL;
 	game.win_ptr = NULL;
+	game.floor_img.ptr = NULL;
+	game.wall_img.ptr = NULL;
+	game.collec_img.ptr = NULL;
 	game.player_img.ptr = NULL;
 	game.exit_img.ptr = NULL;
-	game.collec_img.ptr = NULL;
-	game.wall_img.ptr = NULL;
-	game.space_img.ptr = NULL;
 	return (game);
 }
 

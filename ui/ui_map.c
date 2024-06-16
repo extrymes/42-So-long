@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 19:52:09 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:55:21 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_put_image(t_game_data game, char obj, int x, int y)
 {
 	if (obj == '0')
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
-			game.space_img.ptr, x, y);
+			game.floor_img.ptr, x, y);
 	else if (obj == '1')
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.wall_img.ptr, x, y);
