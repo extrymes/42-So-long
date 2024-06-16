@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:37:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/13 10:44:45 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 15:42:36 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_player_move(int keysim, t_player *player)
 	int			i;
 
 	size = sizeof(keys) / sizeof(keys[0]);
+	i = 0;
 	while (i < size)
 	{
 		if (keys[i].keysim == keysim)

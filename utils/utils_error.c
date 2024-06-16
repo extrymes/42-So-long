@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   utils_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 01:31:26 by sabras           ###   ########.fr       */
+/*   Created: 2024/06/15 22:06:05 by sabras            #+#    #+#             */
+/*   Updated: 2024/06/16 15:31:45 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/libft.h"
 #include "../includes/colors.h"
-#include <stdio.h>
 
-void	ft_draw_map(char **map, t_game_data game)
+void	ft_print_error(char *error)
 {
-	int		x;
-	int		y;
-
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == '0')
-				mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
-					game.space_img.ptr, x, y);
-			if (map[y][x] == '1')
-				mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
-					game.wall_img.ptr, x, y);
-			x++;
-		}
-		y++;
-	}
+	ft_putstr(RED "Error\n");
+	ft_putstr(error);
+	ft_putstr("\n" RESET);
 }

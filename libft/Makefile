@@ -8,7 +8,7 @@ OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 
 %.o: %.c
-	@cc $(CFLAGS) -c $< -o $@
+	@cc $(CFLAGS) -g -c $< -o $@
 
 all: $(NAME)
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.c                                          :+:      :+:    :+:   */
+/*   game_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 17:08:41 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 14:18:58 by sabras           ###   ########.fr       */
+/*   Created: 2024/06/16 15:23:54 by sabras            #+#    #+#             */
+/*   Updated: 2024/06/16 15:25:00 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ t_game_data	ft_init_game(void)
 	return (game);
 }
 
+t_player	ft_new_player(void)
+{
+	t_player	player;
+
+	player.pos.x = 0;
+	player.pos.y = 0;
+	player.points = 0;
+	return (player);
+}
+
 t_coord	ft_new_coord(void)
 {
 	t_coord	pos;
@@ -44,14 +54,4 @@ t_map_objs	ft_new_objs(void)
 	objs.exits = 0;
 	objs.others = 0;
 	return (objs);
-}
-
-t_player	ft_new_player(void)
-{
-	t_player	player;
-
-	player.pos.x = 0;
-	player.pos.y = 0;
-	player.points = 0;
-	return (player);
 }

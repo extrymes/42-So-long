@@ -30,7 +30,7 @@ void	ft_handle_events(t_game_data game)
 static int	ft_handle_keypress(int keysym, t_game_data *game)
 {
 	if (keysym == XK_Escape)
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		ft_destroy_game(*game);
 	printf("Keypress: %d\n", keysym);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 14:27:26 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/16 15:38:27 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,23 @@ typedef struct s_move_keys {
 	void	(*ft)(t_player *);
 }	t_move_keys;
 
-// Map data
-t_map_data	ft_get_map_data(char **map);
+// Game structs
+t_game_data	ft_init_game(void);
+t_player	ft_new_player(void);
+t_coord		ft_new_coord(void);
+t_map_objs	ft_new_objs(void);
+
+// Game events
+void		ft_handle_events(t_game_data game);
+
+// Game utils
+void		ft_destroy_game(t_game_data game);
 
 // Map reader
 char		**ft_read_map(char *file);
+
+// Map data
+t_map_data	ft_get_map_data(char **map);
 
 // Map chechers
 int			ft_check_map(char **map, t_map_data map_data);
@@ -91,26 +103,20 @@ char		**ft_copy_map(char **map);
 void		ft_browse_map(char **map, int x, int y);
 void		ft_free_map(char **map);
 
-// Events
-void		ft_handle_events(t_game_data game);
-
 // Player moves
 void		ft_player_move(int keysim, t_player *player);
 
-// Structs
-t_game_data	ft_init_game(void);
-t_coord		ft_new_coord(void);
-t_map_objs	ft_new_objs(void);
-t_player	ft_new_player(void);
+// UI window
+void		ft_new_window(char **map, t_game_data *game);
 
-// Window
-void		ft_new_window(char **map, t_game_data *data);
-void		ft_destroy_game(t_game_data game);
-
-// Map
+// UI map
 void		ft_draw_map(char **map, t_game_data game);
 
-// Utils
+// UI utils
+t_img_data	ft_load_image(t_game_data game, char *filename);
+void		ft_free_images(t_game_data game);
+
+// Utils error
 void		ft_print_error(char *error);
 
 #endif

@@ -2,15 +2,28 @@ NAME = so_long
 
 SRCS = 	so_long.c
 
+GAME_DIR = game
+GAME_FILES = game_events.c game_structs.c game_utils.c
+GAME_SRCS = $(addprefix $(GAME_DIR)/,$(GAME_FILES))
+
+MAP_DIR = map
+MAP_FILES = map_reader.c map_data.c map_checkers.c map_utils.c
+MAP_SRCS = $(addprefix $(MAP_DIR)/,$(MAP_FILES))
+
+# PLAYER_DIR = player
+# PLAYER_FILES = player_moves.c
+# PLAYER_SRCS = $(addprefix $(PLAYER_DIR)/,$(PLAYER_FILES))
+
 UI_DIR = ui
-UI_FILES = window.c map.c
+UI_FILES = ui_window.c ui_map.c ui_utils.c
 UI_SRCS = $(addprefix $(UI_DIR)/,$(UI_FILES))
 
 UTIL_DIR = utils
-UTIL_FILES = map_data.c map_reader.c map_checkers.c map_utils.c events.c structs.c utils.c
+UTIL_FILES = utils_error.c
 UTIL_SRCS = $(addprefix $(UTIL_DIR)/,$(UTIL_FILES))
 
-OBJS = $(SRCS:.c=.o) $(UI_SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o) $(GAME_SRCS:.c=.o) $(MAP_SRCS:.c=.o) \
+	$(UI_SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
 
 HDR_DIR = includes
 

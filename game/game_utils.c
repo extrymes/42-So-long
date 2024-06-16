@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/15 22:06:05 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/15 23:17:42 by sabras           ###   ########.fr       */
+/*   Created: 2024/06/16 15:18:49 by sabras            #+#    #+#             */
+/*   Updated: 2024/06/16 15:23:59 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-#include "../includes/colors.h"
+#include "../includes/so_long.h"
 
-void	ft_print_error(char *error)
+void	ft_destroy_game(t_game_data game)
 {
-	ft_putstr(RED "Error\n");
-	ft_putstr(error);
-	ft_putstr("\n" RESET);
+	ft_free_images(game);
+	if (game.mlx_ptr && game.win_ptr)
+	{
+		mlx_destroy_window(game.mlx_ptr, game.win_ptr);
+		free(game.win_ptr);
+		free(game.mlx_ptr);
+	}
+	if (game.map)
+		ft_free_map(game.map);
+	exit(0);
 }
