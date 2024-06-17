@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 21:37:48 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:05:16 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void	ft_display_moves(t_game_data game, int moves)
 	while (game.map[y])
 		y++;
 	mlx_set_font(game.mlx_ptr, game.win_ptr, "10x20");
-	mlx_string_put(game.mlx_ptr, game.win_ptr, 0.5 * SPRITE_SIZE, y * SPRITE_SIZE + 22, 0xFFFFFF, "Moves:");
-	mlx_string_put(game.mlx_ptr, game.win_ptr, 2.5 * SPRITE_SIZE, y * SPRITE_SIZE + 22, 0xFFFFFF, moves_str);
+	mlx_string_put(game.mlx_ptr, game.win_ptr, 0.5 * SPRITE_SIZE,
+		y * SPRITE_SIZE + 22, 0xFFFFFF, "Moves:");
+	mlx_string_put(game.mlx_ptr, game.win_ptr, 2.5 * SPRITE_SIZE,
+		y * SPRITE_SIZE + 22, 0xFFFFFF, moves_str);
 	free(moves_str);
 }
 
