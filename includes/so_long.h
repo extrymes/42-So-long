@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 13:20:44 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:18:36 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void		ft_new_window(char **map, t_game_data *game);
 
 // UI map
 void		ft_draw_map(char **map, t_game_data game);
+void		ft_update_map(char **map, t_game_data game, t_coord last_pos);
 
 // UI utils
 t_img_data	ft_load_image(t_game_data game, char *filename);

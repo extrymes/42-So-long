@@ -23,12 +23,15 @@ void	ft_handle_events(t_game_data game)
 
 static int	ft_handle_keypress(int keysym, t_game_data *game)
 {
+	t_coord	last_pos;
+
+	last_pos = game->player.pos;
 	if (keysym == XK_Escape)
 		ft_destroy_game(*game, 0);
 	else if (ft_player_move(&game->player, game->map, keysym))
 	{
 		ft_check_player_pos(&game->player, game);
-		ft_draw_map(game->map, *game);
+		ft_update_map(game->map, *game, last_pos);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 05:42:34 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:57:12 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ void	ft_draw_map(char **map, t_game_data game)
 		}
 		y++;
 	}
+}
+
+void	ft_update_map(char **map, t_game_data game, t_coord last_pos)
+{
+	t_coord	curr_pos;
+
+	curr_pos = game.player.pos;
+	ft_put_image(game, map[last_pos.y][last_pos.x],
+		last_pos.x * SPRITE_SIZE,last_pos.y * SPRITE_SIZE);
+	ft_put_image(game, map[curr_pos.y][curr_pos.x],
+		curr_pos.x * SPRITE_SIZE,curr_pos.y * SPRITE_SIZE);
 }
 
 static void	ft_put_image(t_game_data game, char obj, int x, int y)
