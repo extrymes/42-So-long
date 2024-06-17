@@ -13,11 +13,14 @@
 #include "../includes/so_long.h"
 
 static int	ft_handle_keypress(int keysym, t_game_data *game);
+static int	ft_handle_destroy(t_game_data *game);
 static void	ft_check_player_pos(t_player *player, t_game_data *game);
 
 void	ft_handle_events(t_game_data game)
 {
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &ft_handle_keypress, &game);
+	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask,
+		&ft_handle_destroy, &game);
 	mlx_loop(game.mlx_ptr);
 }
 
@@ -33,6 +36,12 @@ static int	ft_handle_keypress(int keysym, t_game_data *game)
 		ft_check_player_pos(&game->player, game);
 		ft_update_map(game->map, *game, last_pos);
 	}
+	return (0);
+}
+
+static int	ft_handle_destroy(t_game_data *game)
+{
+	ft_destroy_game(*game, 0);
 	return (0);
 }
 
