@@ -35,7 +35,7 @@ LIBFT_FILE = libft.a
 LIBFT = $(addprefix $(LIBFT_DIR)/,$(LIBFT_FILE))
 
 CFLAGS = -Wall -Wextra -Werror
-CC = cc $(CFLAGS) -I $(HDR_DIR)
+CC = cc $(CFLAGS) -g -I $(HDR_DIR)
 
 GRAY = \033[30m
 RED = \033[31m
