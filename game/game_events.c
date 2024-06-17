@@ -12,18 +12,12 @@
 
 #include "../includes/so_long.h"
 
-#include <stdio.h>
-
 static int	ft_handle_keypress(int keysym, t_game_data *game);
-static int	ft_handle_keyrelease(int keysym, void *game);
-static int	ft_handle_no_event(void *game);
+static void	ft_check_player_pos(t_player *player, t_game_data *game);
 
 void	ft_handle_events(t_game_data game)
 {
-	mlx_loop_hook(game.mlx_ptr, &ft_handle_no_event, &game);
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &ft_handle_keypress, &game);
-	mlx_hook(game.win_ptr, KeyRelease, KeyReleaseMask, &ft_handle_keyrelease,
-		&game);
 	mlx_loop(game.mlx_ptr);
 }
 
@@ -31,19 +25,22 @@ static int	ft_handle_keypress(int keysym, t_game_data *game)
 {
 	if (keysym == XK_Escape)
 		ft_destroy_game(*game);
-	printf("Keypress: %d\n", keysym);
+	else if (ft_player_move(&game->player, game->map, keysym))
+	{
+		ft_check_player_pos(&game->player, game);
+		ft_draw_map(game->map, *game);
+	}
 	return (0);
 }
 
-static int	ft_handle_keyrelease(int keysym, void *data)
+static void	ft_check_player_pos(t_player *player, t_game_data *game)
 {
-	(void)data;
-	printf("Keyrelease: %d\n", keysym);
-	return (0);
-}
-
-static int	ft_handle_no_event(void *data)
-{
-	(void)data;
-	return (0);
+	if (game->map[player->pos.y][player->pos.x] == 'C')
+	{
+		game->map[player->pos.y][player->pos.x] = '0';
+		player->points++;
+	}
+	if (game->map[player->pos.y][player->pos.x] == 'E'
+		&& (player->points == game->map_data.collectibles))
+		ft_destroy_game(*game);
 }

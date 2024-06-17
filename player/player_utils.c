@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_utils.c                                       :+:      :+:    :+:   */
+/*   player_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 15:18:49 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 08:51:24 by sabras           ###   ########.fr       */
+/*   Created: 2024/06/17 05:21:43 by sabras            #+#    #+#             */
+/*   Updated: 2024/06/17 08:24:23 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_destroy_game(t_game_data game)
+void	ft_get_player_pos(char **map, t_player *player)
 {
-	ft_free_images(game);
-	if (game.mlx_ptr && game.win_ptr)
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
 	{
-		mlx_destroy_window(game.mlx_ptr, game.win_ptr);
-		free(game.win_ptr);
-		free(game.mlx_ptr);
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'P')
+			{
+				player->pos.x = x;
+				player->pos.y = y;
+			}
+			x++;
+		}
+		y++;
 	}
-	if (game.map)
-		ft_free_map(game.map);
-	exit(0);
 }

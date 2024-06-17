@@ -6,51 +6,83 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:37:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 15:42:36 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 07:57:24 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	ft_move_up(t_player *player);
-static void	ft_move_down(t_player *player);
-static void	ft_move_left(t_player *player);
-static void	ft_move_right(t_player *player);
+static int	ft_move_up(t_player *player, char **map);
+static int	ft_move_down(t_player *player, char **map);
+static int	ft_move_left(t_player *player, char **map);
+static int	ft_move_right(t_player *player, char **map);
 
-void	ft_player_move(int keysim, t_player *player)
+int	ft_player_move(t_player *player, char **map, int keysym)
 {
-	t_move_keys	keys[] = {
-		{}
+	const t_move_keys	keys[] = {
+	{XK_w, ft_move_up},
+	{XK_s, ft_move_down},
+	{XK_a, ft_move_left},
+	{XK_d, ft_move_right}
 	};
-	int			size;
-	int			i;
+	int					size;
+	int					i;
 
 	size = sizeof(keys) / sizeof(keys[0]);
 	i = 0;
 	while (i < size)
 	{
-		if (keys[i].keysim == keysim)
-			keys[i].ft(player);
+		if (keys[i].keysym == keysym)
+			return (keys[i].ft(player, map));
 		i++;
 	}
+	return (0);
 }
 
-static void	ft_move_up(t_player *player)
+static int	ft_move_up(t_player *player, char **map)
 {
-	player->pos.y -= 1;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x;
+	new_pos.y = player->pos.y - 1;
+	if (map[new_pos.y][new_pos.x] == '1')
+		return (0);
+	player->pos = new_pos;
+	return (1);
 }
 
-static void	ft_move_down(t_player *player)
+static int	ft_move_down(t_player *player, char **map)
 {
-	player->pos.y += 1;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x;
+	new_pos.y = player->pos.y + 1;
+	if (map[new_pos.y][new_pos.x] == '1')
+		return (0);
+	player->pos = new_pos;
+	return (1);
 }
 
-static void	ft_move_left(t_player *player)
+static int	ft_move_left(t_player *player, char **map)
 {
-	player->pos.x -= 1;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x - 1;
+	new_pos.y = player->pos.y;
+	if (map[new_pos.y][new_pos.x] == '1')
+		return (0);
+	player->pos = new_pos;
+	return (1);
 }
 
-static void	ft_move_right(t_player *player)
+static int	ft_move_right(t_player *player, char **map)
 {
-	player->pos.x += 1;
+	t_coord	new_pos;
+
+	new_pos.x = player->pos.x + 1;
+	new_pos.y = player->pos.y;
+	if (map[new_pos.y][new_pos.x] == '1')
+		return (0);
+	player->pos = new_pos;
+	return (1);
 }

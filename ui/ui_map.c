@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 19:55:21 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 05:42:34 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ void	ft_draw_map(char **map, t_game_data game)
 
 static void	ft_put_image(t_game_data game, char obj, int x, int y)
 {
-	if (obj == '0')
+	if (x == game.player.pos.x * SPRITE_SIZE
+		&& (y == game.player.pos.y * SPRITE_SIZE))
+		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
+			game.player_img.ptr, x, y);
+	else if (obj == '0' || obj == 'P')
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.floor_img.ptr, x, y);
 	else if (obj == '1')
@@ -43,9 +47,6 @@ static void	ft_put_image(t_game_data game, char obj, int x, int y)
 	else if (obj == 'C')
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.collec_img.ptr, x, y);
-	else if (obj == 'P')
-		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
-			game.player_img.ptr, x, y);
 	else if (obj == 'E')
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.exit_img.ptr, x, y);

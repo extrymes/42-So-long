@@ -10,9 +10,9 @@ MAP_DIR = map
 MAP_FILES = map_reader.c map_data.c map_checkers.c map_utils.c
 MAP_SRCS = $(addprefix $(MAP_DIR)/,$(MAP_FILES))
 
-# PLAYER_DIR = player
-# PLAYER_FILES = player_moves.c
-# PLAYER_SRCS = $(addprefix $(PLAYER_DIR)/,$(PLAYER_FILES))
+PLAYER_DIR = player
+PLAYER_FILES = player_moves.c player_utils.c
+PLAYER_SRCS = $(addprefix $(PLAYER_DIR)/,$(PLAYER_FILES))
 
 UI_DIR = ui
 UI_FILES = ui_window.c ui_map.c ui_utils.c
@@ -23,7 +23,7 @@ UTIL_FILES = utils_error.c
 UTIL_SRCS = $(addprefix $(UTIL_DIR)/,$(UTIL_FILES))
 
 OBJS = $(SRCS:.c=.o) $(GAME_SRCS:.c=.o) $(MAP_SRCS:.c=.o) \
-	$(UI_SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
+	$(PLAYER_SRCS:.c=.o) $(UI_SRCS:.c=.o) $(UTIL_SRCS:.c=.o)
 
 HDR_DIR = includes
 

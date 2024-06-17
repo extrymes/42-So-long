@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:02:00 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 14:28:47 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 08:51:18 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main(int ac, char **av)
 	if (!game.mlx_ptr)
 		return (ft_print_error("Mlx init error"), 1);
 	ft_new_window(game.map, &game);
+	game.player = ft_new_player();
+	ft_get_player_pos(game.map, &game.player);
 	ft_draw_map(game.map, game);
 	ft_handle_events(game);
 	return (0);

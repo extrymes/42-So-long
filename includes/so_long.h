@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 19:56:41 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 08:24:18 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ typedef struct s_img_data {
 	int		height;
 }	t_img_data;
 
+typedef struct s_move_keys {
+	int	keysym;
+	int	(*ft)(t_player *player, char **map);
+}	t_move_keys;
+
 typedef struct s_game_data {
 	char		**map;
 	t_map_data	map_data;
@@ -71,11 +76,6 @@ typedef struct s_game_data {
 	t_img_data	player_img;
 	t_img_data	exit_img;
 }	t_game_data;
-
-typedef struct s_move_keys {
-	int		keysim;
-	void	(*ft)(t_player *);
-}	t_move_keys;
 
 // Game structs
 t_game_data	ft_init_game(void);
@@ -104,7 +104,10 @@ void		ft_browse_map(char **map, int x, int y);
 void		ft_free_map(char **map);
 
 // Player moves
-void		ft_player_move(int keysim, t_player *player);
+int			ft_player_move(t_player *player, char **map, int keysym);
+
+// Player utils
+void		ft_get_player_pos(char **map, t_player *player);
 
 // UI window
 void		ft_new_window(char **map, t_game_data *game);
