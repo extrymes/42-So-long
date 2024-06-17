@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:53:39 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 15:27:28 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:01:45 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_coord	ft_fetch_start(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'P')
+			if (map[y][x] == START)
 			{
 				pos.x = x;
 				pos.y = y;
@@ -65,7 +65,7 @@ static t_coord	ft_fetch_exit(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'E')
+			if (map[y][x] == EXIT)
 			{
 				pos.x = x;
 				pos.y = y;
@@ -91,7 +91,7 @@ static int	ft_count_collectibles(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'C')
+			if (map[y][x] == COLLEC)
 				collectibles++;
 			x++;
 		}

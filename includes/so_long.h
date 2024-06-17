@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 20:47:52 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:08:52 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # define COLLEC_PATH "textures/apple.xpm"
 # define PLAYER_PATH "textures/player.xpm"
 # define EXIT_PATH "textures/portal.xpm"
+# define FLOOR '0'
+# define WALL '1'
+# define COLLEC 'C'
+# define START 'P'
+# define EXIT 'E'
 # include </home/sabras/sgoinfre/minilibx/mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>

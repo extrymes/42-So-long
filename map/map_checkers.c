@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 10:51:08 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:09:23 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	ft_check_borders(char **map)
 		while (map[y][x])
 		{
 			if ((x == 0 || y == 0 || !map[y + 1] || !map[y][x + 1]) &&
-				(map[y][x] != '1'))
+				(map[y][x] != WALL))
 				return (0);
 			x++;
 		}
@@ -99,11 +99,12 @@ static int	ft_check_objects(char **map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == 'P')
+			if (map[y][x] == START)
 				objs.starts++;
-			else if (map[y][x] == 'E')
+			else if (map[y][x] == EXIT)
 				objs.exits++;
-			else if (map[y][x] != '0' && map[y][x] != '1' && map[y][x] != 'C')
+			else if (map[y][x] != FLOOR && map[y][x] != WALL
+				&& (map[y][x] != COLLEC))
 				objs.others++;
 			x++;
 		}
@@ -125,8 +126,8 @@ static int	ft_check_path(char **map, char **map_copy)
 		x = 0;
 		while (map[y][x])
 		{
-			if ((map[y][x] == 'P' || map[y][x] == 'E' || map[y][x] == 'C')
-				&& (map_copy[y][x] != '1'))
+			if ((map[y][x] == START || map[y][x] == EXIT
+				|| (map[y][x] == COLLEC)) && (map_copy[y][x] != WALL))
 				return (ft_free_map(map_copy, -1), 0);
 			x++;
 		}

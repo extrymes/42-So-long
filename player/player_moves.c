@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:37:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 20:48:47 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:02:18 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	ft_move_up(t_player *player, char **map)
 
 	new_pos.x = player->pos.x;
 	new_pos.y = player->pos.y - 1;
-	if (map[new_pos.y][new_pos.x] == '1')
+	if (map[new_pos.y][new_pos.x] == WALL)
 		return (0);
 	player->pos = new_pos;
 	player->moves++;
@@ -58,7 +58,7 @@ static int	ft_move_down(t_player *player, char **map)
 
 	new_pos.x = player->pos.x;
 	new_pos.y = player->pos.y + 1;
-	if (map[new_pos.y][new_pos.x] == '1')
+	if (map[new_pos.y][new_pos.x] == WALL)
 		return (0);
 	player->pos = new_pos;
 	player->moves++;
@@ -71,7 +71,7 @@ static int	ft_move_left(t_player *player, char **map)
 
 	new_pos.x = player->pos.x - 1;
 	new_pos.y = player->pos.y;
-	if (map[new_pos.y][new_pos.x] == '1')
+	if (map[new_pos.y][new_pos.x] == WALL)
 		return (0);
 	player->pos = new_pos;
 	player->moves++;
@@ -84,7 +84,7 @@ static int	ft_move_right(t_player *player, char **map)
 
 	new_pos.x = player->pos.x + 1;
 	new_pos.y = player->pos.y;
-	if (map[new_pos.y][new_pos.x] == '1')
+	if (map[new_pos.y][new_pos.x] == WALL)
 		return (0);
 	player->pos = new_pos;
 	player->moves++;

@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 21:34:44 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:03:02 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ static void	ft_put_image(t_game_data game, char obj, int x, int y)
 		&& (y == game.player.pos.y * SPRITE_SIZE))
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.player_img.ptr, x, y);
-	else if (obj == '0' || obj == 'P')
+	else if (obj == FLOOR || obj == START)
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.floor_img.ptr, x, y);
-	else if (obj == '1')
+	else if (obj == WALL)
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.wall_img.ptr, x, y);
-	else if (obj == 'C')
+	else if (obj == COLLEC)
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.collec_img.ptr, x, y);
-	else if (obj == 'E')
+	else if (obj == EXIT)
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.exit_img.ptr, x, y);
 }
