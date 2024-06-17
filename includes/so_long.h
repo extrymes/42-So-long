@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 08:24:18 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 13:20:44 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_map_objs	ft_new_objs(void);
 void		ft_handle_events(t_game_data game);
 
 // Game utils
-void		ft_destroy_game(t_game_data game);
+void		ft_destroy_game(t_game_data game, int status);
 
 // Map reader
 char		**ft_read_map(char *file);
@@ -101,7 +101,7 @@ int			ft_check_map(char **map, t_map_data map_data);
 // Map utils
 char		**ft_copy_map(char **map);
 void		ft_browse_map(char **map, int x, int y);
-void		ft_free_map(char **map);
+void		ft_free_map(char **map, int size);
 
 // Player moves
 int			ft_player_move(t_player *player, char **map, int keysym);
@@ -117,7 +117,7 @@ void		ft_draw_map(char **map, t_game_data game);
 
 // UI utils
 t_img_data	ft_load_image(t_game_data game, char *filename);
-void		ft_free_images(t_game_data game);
+void		ft_destroy_images(t_game_data game);
 
 // Utils error
 void		ft_print_error(char *error);

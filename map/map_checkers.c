@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 14:27:47 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:51:08 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ static int	ft_check_path(char **map, char **map_copy)
 		{
 			if ((map[y][x] == 'P' || map[y][x] == 'E' || map[y][x] == 'C')
 				&& (map_copy[y][x] != '1'))
-				return (ft_free_map(map_copy), 0);
+				return (ft_free_map(map_copy, -1), 0);
 			x++;
 		}
 		y++;
 	}
-	return (ft_free_map(map_copy), 1);
+	return (ft_free_map(map_copy, -1), 1);
 }

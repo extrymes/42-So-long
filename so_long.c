@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:02:00 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 08:51:18 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 11:49:24 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	main(int ac, char **av)
 		return (1);
 	game.map_data = ft_get_map_data(game.map);
 	if (!ft_check_map(game.map, game.map_data))
-		return (ft_destroy_game(game), 1);
-	game.mlx_ptr = mlx_init();
-	if (!game.mlx_ptr)
-		return (ft_print_error("Mlx init error"), 1);
+		return (ft_destroy_game(game, 1), 1);
 	ft_new_window(game.map, &game);
 	game.player = ft_new_player();
 	ft_get_player_pos(game.map, &game.player);

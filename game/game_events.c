@@ -24,7 +24,7 @@ void	ft_handle_events(t_game_data game)
 static int	ft_handle_keypress(int keysym, t_game_data *game)
 {
 	if (keysym == XK_Escape)
-		ft_destroy_game(*game);
+		ft_destroy_game(*game, 0);
 	else if (ft_player_move(&game->player, game->map, keysym))
 	{
 		ft_check_player_pos(&game->player, game);
@@ -42,5 +42,5 @@ static void	ft_check_player_pos(t_player *player, t_game_data *game)
 	}
 	if (game->map[player->pos.y][player->pos.x] == 'E'
 		&& (player->points == game->map_data.collectibles))
-		ft_destroy_game(*game);
+		ft_destroy_game(*game, 0);
 }

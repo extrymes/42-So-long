@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:14:13 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/15 22:39:01 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 11:35:56 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,20 @@ char	**ft_read_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (ft_print_error("Unable to read file"), NULL);
-	map = malloc(1);
+	map = NULL;
 	i = 0;
 	while (1)
 	{
 		map = ft_realloc_map(map, i);
 		if (!map)
-			return (NULL);
+			return (close(fd), NULL);
 		map[i] = get_next_line(fd);
 		if (!map[i])
 			break ;
-		ft_remove_nl(&map[i++]);
+		ft_remove_nl(&map[i]);
+		i++;
 	}
-	return (map);
+	return (close(fd), map);
 }
 
 static char	**ft_realloc_map(char **map, int size)
@@ -50,20 +51,16 @@ static char	**ft_realloc_map(char **map, int size)
 
 	new_map = malloc((size + 1) * sizeof(char *));
 	if (!new_map)
-		return (NULL);
+		return (ft_free_map(map, size), NULL);
 	i = 0;
 	while (i < size)
 	{
 		new_map[i] = ft_strdup(map[i]);
-		if (!new_map[i++])
-			return (NULL);
+		if (!new_map[i])
+			return (ft_free_map(map, size), ft_free_map(new_map, i), NULL);
+		i++;
 	}
-	i = 0;
-	while (i < size)
-		free(map[i++]);
-	free(map);
-	map = NULL;
-	return (new_map);
+	return (ft_free_map(map, size), new_map);
 }
 
 static int	ft_check_file(char *file)

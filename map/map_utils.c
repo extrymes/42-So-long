@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 00:38:25 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 12:09:07 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ char	**ft_copy_map(char **map)
 		i++;
 	map_copy = malloc((i + 1) * sizeof(char *));
 	if (!map_copy)
-		return (NULL);
+		return (ft_free_map(map, -1), NULL);
 	i = 0;
 	while (map[i])
 	{
 		map_copy[i] = ft_strdup(map[i]);
-		if (!map_copy[i++])
-			return (NULL);
+		if (!map_copy[i])
+			return (ft_free_map(map, -1), ft_free_map(map_copy, i), NULL);
+		i++;
 	}
 	map_copy[i] = NULL;
 	return (map_copy);
@@ -46,14 +47,14 @@ void	ft_browse_map(char **map, int x, int y)
 	ft_browse_map(map, x + 1, y);
 }
 
-void	ft_free_map(char **map)
+void	ft_free_map(char **map, int size)
 {
 	int	i;
 
+	if (!map)
+		return ;
 	i = 0;
-	while (map[i])
-		i++;
-	while (i >= 0)
-		free(map[i--]);
+	while ((size != -1 && i < size) || (size == -1 && map[i]))
+		free(map[i++]);
 	free(map);
 }

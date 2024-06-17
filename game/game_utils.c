@@ -6,22 +6,22 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:18:49 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 08:51:24 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 13:30:24 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_destroy_game(t_game_data game)
+void	ft_destroy_game(t_game_data game, int status)
 {
-	ft_free_images(game);
-	if (game.mlx_ptr && game.win_ptr)
-	{
+	ft_destroy_images(game);
+	if (game.win_ptr)
 		mlx_destroy_window(game.mlx_ptr, game.win_ptr);
-		free(game.win_ptr);
+	if (game.mlx_ptr)
+	{
+		mlx_destroy_display(game.mlx_ptr);
 		free(game.mlx_ptr);
 	}
-	if (game.map)
-		ft_free_map(game.map);
-	exit(0);
+	ft_free_map(game.map, -1);
+	exit(status);
 }
