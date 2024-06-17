@@ -14,7 +14,6 @@
 
 static int	ft_handle_keypress(int keysym, t_game_data *game);
 static int	ft_handle_destroy(t_game_data *game);
-static void	ft_check_player_pos(t_player *player, t_game_data *game);
 
 void	ft_handle_events(t_game_data game)
 {
@@ -43,16 +42,4 @@ static int	ft_handle_destroy(t_game_data *game)
 {
 	ft_destroy_game(*game, 0);
 	return (0);
-}
-
-static void	ft_check_player_pos(t_player *player, t_game_data *game)
-{
-	if (game->map[player->pos.y][player->pos.x] == 'C')
-	{
-		game->map[player->pos.y][player->pos.x] = '0';
-		player->points++;
-	}
-	if (game->map[player->pos.y][player->pos.x] == 'E'
-		&& (player->points == game->map_data.collectibles))
-		ft_destroy_game(*game, 0);
 }

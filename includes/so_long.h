@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 14:18:36 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:30:12 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ int			ft_player_move(t_player *player, char **map, int keysym);
 
 // Player utils
 void		ft_get_player_pos(char **map, t_player *player);
+void		ft_check_player_pos(t_player *player, t_game_data *game);
 
 // UI window
 void		ft_new_window(char **map, t_game_data *game);

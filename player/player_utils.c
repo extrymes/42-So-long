@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 05:21:43 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 08:24:23 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:29:51 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,16 @@ void	ft_get_player_pos(char **map, t_player *player)
 		}
 		y++;
 	}
+}
+
+void	ft_check_player_pos(t_player *player, t_game_data *game)
+{
+	if (game->map[player->pos.y][player->pos.x] == 'C')
+	{
+		game->map[player->pos.y][player->pos.x] = '0';
+		player->points++;
+	}
+	else if (game->map[player->pos.y][player->pos.x] == 'E'
+		&& (player->points == game->map_data.collectibles))
+		ft_destroy_game(*game, 0);
 }
