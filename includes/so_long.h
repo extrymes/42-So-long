@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:08:52 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 22:19:15 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,9 @@ void		ft_update_map(char **map, t_game_data game, t_coord last_pos);
 t_img_data	ft_load_image(t_game_data game, char *filename);
 void		ft_destroy_images(t_game_data game);
 
-// Utils error
+// Utils printer
+void		ft_print_you_win(void);
+void		ft_print_you_lost(void);
 void		ft_print_error(char *error);
 
 #endif

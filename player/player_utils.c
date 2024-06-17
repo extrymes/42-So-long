@@ -43,5 +43,8 @@ void	ft_check_player_pos(t_player *player, t_game_data *game)
 	}
 	else if (game->map[player->pos.y][player->pos.x] == EXIT
 		&& (player->points == game->map_data.collectibles))
+	{
+		ft_print_you_win();
 		ft_destroy_game(*game, 0);
+	}
 }

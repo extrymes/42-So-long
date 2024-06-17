@@ -19,7 +19,7 @@ UI_FILES = ui_window.c ui_map.c ui_utils.c
 UI_SRCS = $(addprefix $(UI_DIR)/,$(UI_FILES))
 
 UTIL_DIR = utils
-UTIL_FILES = utils_error.c
+UTIL_FILES = utils_printer.c
 UTIL_SRCS = $(addprefix $(UTIL_DIR)/,$(UTIL_FILES))
 
 OBJS = $(SRCS:.c=.o) $(GAME_SRCS:.c=.o) $(MAP_SRCS:.c=.o) \
