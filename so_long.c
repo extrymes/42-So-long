@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:02:00 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 11:49:24 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 20:47:52 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	ft_new_window(game.map, &game);
 	game.player = ft_new_player();
 	ft_get_player_pos(game.map, &game.player);
-	ft_draw_map(game.map, game);
+	ft_render_map(game.map, game);
 	ft_handle_events(game);
 	return (0);
 }

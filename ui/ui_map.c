@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 15:32:53 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 21:34:44 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 static void	ft_put_image(t_game_data game, char obj, int x, int y);
 
-void	ft_draw_map(char **map, t_game_data game)
+void	ft_render_map(char **map, t_game_data game)
 {
 	int		x;
 	int		y;
 
+	mlx_clear_window(game.mlx_ptr, game.win_ptr);
 	y = 0;
 	while (map[y])
 	{
@@ -30,6 +31,7 @@ void	ft_draw_map(char **map, t_game_data game)
 		}
 		y++;
 	}
+	ft_display_moves(game, game.player.moves);
 }
 
 void	ft_update_map(char **map, t_game_data game, t_coord last_pos)

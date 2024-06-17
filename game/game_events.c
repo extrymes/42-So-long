@@ -33,7 +33,7 @@ static int	ft_handle_keypress(int keysym, t_game_data *game)
 	else if (ft_player_move(&game->player, game->map, keysym))
 	{
 		ft_check_player_pos(&game->player, game);
-		ft_update_map(game->map, *game, last_pos);
+		ft_render_map(game->map, *game);
 	}
 	return (0);
 }

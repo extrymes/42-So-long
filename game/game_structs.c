@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:23:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/16 19:56:26 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:46:25 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_player	ft_new_player(void)
 	player.pos.x = 0;
 	player.pos.y = 0;
 	player.points = 0;
+	player.moves = 0;
 	return (player);
 }
 
