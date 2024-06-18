@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:31:19 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:06:11 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # define SPRITE_SIZE 32
 # define FLOOR_PATH "textures/floor.xpm"
 # define WALL_PATH "textures/box.xpm"
-# define COLLEC_PATH "textures/apple.xpm"
+# define COLLEC_PATH "textures/orange.xpm"
 # define PLAYER_PATH "textures/player.xpm"
 # define EXIT_PATH "textures/portal.xpm"
+# define ENEMY_PATH "textures/slime.xpm"
 # define FLOOR '0'
 # define WALL '1'
 # define COLLEC 'C'
