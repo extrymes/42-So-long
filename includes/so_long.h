@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:19:15 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:14:57 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,21 @@ typedef struct s_player
 	int		moves;
 }	t_player;
 
-typedef struct s_img_data {
+typedef struct s_sprite
+{
 	void	*ptr;
 	int		width;
 	int		height;
-}	t_img_data;
+}	t_sprite;
 
-typedef struct s_move_keys {
+typedef struct s_move_keys
+{
 	int	keysym;
 	int	(*ft)(t_player *player, char **map);
 }	t_move_keys;
 
-typedef struct s_game_data {
+typedef struct s_game
+{
 	char		**map;
 	t_map_data	map_data;
 	void		*mlx_ptr;
@@ -76,24 +79,24 @@ typedef struct s_game_data {
 	int			win_width;
 	int			win_height;
 	t_player	player;
-	t_img_data	floor_img;
-	t_img_data	wall_img;
-	t_img_data	collec_img;
-	t_img_data	player_img;
-	t_img_data	exit_img;
-}	t_game_data;
+	t_sprite	floor_img;
+	t_sprite	wall_img;
+	t_sprite	collec_img;
+	t_sprite	player_img;
+	t_sprite	exit_img;
+}	t_game;
 
 // Game structs
-t_game_data	ft_init_game(void);
+t_game		ft_init_game(void);
 t_player	ft_new_player(void);
 t_coord		ft_new_coord(void);
 t_map_objs	ft_new_objs(void);
 
 // Game events
-void		ft_handle_events(t_game_data game);
+void		ft_handle_events(t_game game);
 
 // Game utils
-void		ft_destroy_game(t_game_data game, int status);
+void		ft_destroy_game(t_game game, int status);
 
 // Map reader
 char		**ft_read_map(char *file);
@@ -114,19 +117,19 @@ int			ft_player_move(t_player *player, char **map, int keysym);
 
 // Player utils
 void		ft_get_player_pos(char **map, t_player *player);
-void		ft_check_player_pos(t_player *player, t_game_data *game);
+void		ft_check_player_pos(t_player *player, t_game *game);
 
 // UI window
-void		ft_new_window(char **map, t_game_data *game);
-void		ft_display_moves(t_game_data game, int moves);
+void		ft_new_window(char **map, t_game *game);
+void		ft_display_hud(t_game game, int moves);
 
 // UI map
-void		ft_render_map(char **map, t_game_data game);
-void		ft_update_map(char **map, t_game_data game, t_coord last_pos);
+void		ft_render_map(char **map, t_game game);
+void		ft_update_map(char **map, t_game game, t_coord last_pos);
 
 // UI utils
-t_img_data	ft_load_image(t_game_data game, char *filename);
-void		ft_destroy_images(t_game_data game);
+t_sprite	ft_load_image(t_game game, char *filename);
+void		ft_destroy_images(t_game game);
 
 // Utils printer
 void		ft_print_you_win(void);

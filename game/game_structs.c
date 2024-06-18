@@ -6,15 +6,15 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:23:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 17:46:25 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 01:32:02 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_game_data	ft_init_game(void)
+t_game	ft_init_game(void)
 {
-	t_game_data	game;
+	t_game	game;
 
 	game.map = NULL;
 	game.mlx_ptr = NULL;

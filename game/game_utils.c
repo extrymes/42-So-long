@@ -6,13 +6,13 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:18:49 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 13:30:24 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 01:32:02 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_destroy_game(t_game_data game, int status)
+void	ft_destroy_game(t_game game, int status)
 {
 	ft_destroy_images(game);
 	if (game.win_ptr)

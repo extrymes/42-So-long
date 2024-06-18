@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:02:00 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 20:47:52 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 01:32:02 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(int ac, char **av)
 {
-	t_game_data	game;
+	t_game	game;
 
 	if (ac != 2)
 		return (ft_print_error("Invalid argument"), 1);

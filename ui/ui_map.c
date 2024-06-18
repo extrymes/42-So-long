@@ -6,15 +6,15 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:03:02 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:16:40 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	ft_put_image(t_game_data game, char obj, int x, int y);
+static void	ft_put_image(t_game game, char obj, int x, int y);
 
-void	ft_render_map(char **map, t_game_data game)
+void	ft_render_map(char **map, t_game game)
 {
 	int		x;
 	int		y;
@@ -31,10 +31,10 @@ void	ft_render_map(char **map, t_game_data game)
 		}
 		y++;
 	}
-	ft_display_moves(game, game.player.moves);
+	ft_display_hud(game, game.player.moves);
 }
 
-void	ft_update_map(char **map, t_game_data game, t_coord last_pos)
+void	ft_update_map(char **map, t_game game, t_coord last_pos)
 {
 	t_coord	curr_pos;
 
@@ -45,7 +45,7 @@ void	ft_update_map(char **map, t_game_data game, t_coord last_pos)
 		curr_pos.x * SPRITE_SIZE, curr_pos.y * SPRITE_SIZE);
 }
 
-static void	ft_put_image(t_game_data game, char obj, int x, int y)
+static void	ft_put_image(t_game game, char obj, int x, int y)
 {
 	if (x == game.player.pos.x * SPRITE_SIZE
 		&& (y == game.player.pos.y * SPRITE_SIZE))

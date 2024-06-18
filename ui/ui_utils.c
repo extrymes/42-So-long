@@ -6,15 +6,15 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:10:40 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 13:21:08 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:13:11 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-t_img_data	ft_load_image(t_game_data game, char *filename)
+t_sprite	ft_load_image(t_game game, char *filename)
 {
-	t_img_data	img;
+	t_sprite	img;
 
 	img.ptr = mlx_xpm_file_to_image(game.mlx_ptr, filename,
 			&img.width, &img.height);
@@ -26,7 +26,7 @@ t_img_data	ft_load_image(t_game_data game, char *filename)
 	return (img);
 }
 
-void	ft_destroy_images(t_game_data game)
+void	ft_destroy_images(t_game game)
 {
 	if (game.floor_img.ptr)
 		mlx_destroy_image(game.mlx_ptr, game.floor_img.ptr);

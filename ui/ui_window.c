@@ -6,16 +6,16 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:56:14 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:16:40 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/libft.h"
 
-static void	ft_calculate_win_size(char **map, t_game_data *game);
+static void	ft_calculate_win_size(char **map, t_game *game);
 
-void	ft_new_window(char **map, t_game_data *game)
+void	ft_new_window(char **map, t_game *game)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
@@ -34,7 +34,7 @@ void	ft_new_window(char **map, t_game_data *game)
 	game->exit_img = ft_load_image(*game, EXIT_PATH);
 }
 
-void	ft_display_moves(t_game_data game, int moves)
+void	ft_display_hud(t_game game, int moves)
 {
 	char	*moves_str;
 	int		y;
@@ -53,7 +53,7 @@ void	ft_display_moves(t_game_data game, int moves)
 	free(moves_str);
 }
 
-static void	ft_calculate_win_size(char **map, t_game_data *game)
+static void	ft_calculate_win_size(char **map, t_game *game)
 {
 	int	i;
 

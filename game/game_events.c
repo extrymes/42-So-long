@@ -12,10 +12,10 @@
 
 #include "../includes/so_long.h"
 
-static int	ft_handle_keypress(int keysym, t_game_data *game);
-static int	ft_handle_destroy(t_game_data *game);
+static int	ft_handle_keypress(int keysym, t_game *game);
+static int	ft_handle_destroy(t_game *game);
 
-void	ft_handle_events(t_game_data game)
+void	ft_handle_events(t_game game)
 {
 	mlx_hook(game.win_ptr, KeyPress, KeyPressMask, &ft_handle_keypress, &game);
 	mlx_hook(game.win_ptr, DestroyNotify, StructureNotifyMask,
@@ -23,7 +23,7 @@ void	ft_handle_events(t_game_data game)
 	mlx_loop(game.mlx_ptr);
 }
 
-static int	ft_handle_keypress(int keysym, t_game_data *game)
+static int	ft_handle_keypress(int keysym, t_game *game)
 {
 	t_coord	last_pos;
 
@@ -38,7 +38,7 @@ static int	ft_handle_keypress(int keysym, t_game_data *game)
 	return (0);
 }
 
-static int	ft_handle_destroy(t_game_data *game)
+static int	ft_handle_destroy(t_game *game)
 {
 	ft_destroy_game(*game, 0);
 	return (0);
