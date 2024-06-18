@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 05:21:43 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 14:36:14 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 22:04:49 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_check_player_pos(t_player *player, t_game *game)
 	}
 	else if (game->map[player->pos.y][player->pos.x] == ENEMY)
 	{
-		ft_print_you_lost();
+		ft_print_you_died();
 		ft_destroy_game(*game, 0);
 	}
 }

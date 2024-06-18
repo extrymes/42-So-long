@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 14:36:30 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 22:04:49 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void		ft_destroy_images(t_game game);
 
 // Utils printer
 void		ft_print_you_win(void);
-void		ft_print_you_lost(void);
+void		ft_print_you_died(void);
 void		ft_print_error(char *error);
 
 #endif
