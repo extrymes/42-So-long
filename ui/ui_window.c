@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:29:47 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:35:18 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_new_window(char **map, t_game *game)
 	game->collec_img = ft_load_image(*game, COLLEC_PATH);
 	game->player_img = ft_load_image(*game, PLAYER_PATH);
 	game->exit_img = ft_load_image(*game, EXIT_PATH);
+	game->enemy_img = ft_load_image(*game, ENEMY_PATH);
 }
 
 void	ft_display_hud(t_game game, int moves, int points)

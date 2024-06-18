@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:09:23 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:32:49 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static int	ft_check_objects(char **map)
 			else if (map[y][x] == EXIT)
 				objs.exits++;
 			else if (map[y][x] != FLOOR && map[y][x] != WALL
-				&& (map[y][x] != COLLEC))
+				&& (map[y][x] != COLLEC && map[y][x] != ENEMY))
 				objs.others++;
 			x++;
 		}

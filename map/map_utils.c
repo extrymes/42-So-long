@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:01:59 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:34:10 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**ft_copy_map(char **map)
 
 void	ft_browse_map(char **map, int x, int y)
 {
-	if (map[y][x] == WALL)
+	if (map[y][x] == WALL || map[y][x] == ENEMY)
 		return ;
 	map[y][x] = WALL;
 	ft_browse_map(map, x, y + 1);

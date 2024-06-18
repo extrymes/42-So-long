@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:22:50 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:34:53 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,7 @@ static void	ft_put_image(t_game game, char obj, int x, int y)
 	else if (obj == EXIT)
 		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
 			game.exit_img.ptr, x, y);
+	else if (obj == ENEMY)
+		mlx_put_image_to_window(game.mlx_ptr, game.win_ptr,
+			game.enemy_img.ptr, x, y);
 }

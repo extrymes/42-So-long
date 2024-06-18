@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:23:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 01:32:02 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:33:34 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_game	ft_init_game(void)
 	game.collec_img.ptr = NULL;
 	game.player_img.ptr = NULL;
 	game.exit_img.ptr = NULL;
+	game.enemy_img.ptr = NULL;
 	return (game);
 }
 

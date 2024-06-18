@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 14:06:11 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:36:30 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define COLLEC 'C'
 # define START 'P'
 # define EXIT 'E'
+# define ENEMY 'X'
 # include </home/sabras/sgoinfre/minilibx/mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -85,6 +86,7 @@ typedef struct s_game
 	t_sprite	collec_img;
 	t_sprite	player_img;
 	t_sprite	exit_img;
+	t_sprite	enemy_img;
 }	t_game;
 
 // Game structs

@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:10:40 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:13:11 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:35:05 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void	ft_destroy_images(t_game game)
 		mlx_destroy_image(game.mlx_ptr, game.player_img.ptr);
 	if (game.exit_img.ptr)
 		mlx_destroy_image(game.mlx_ptr, game.exit_img.ptr);
+	if (game.enemy_img.ptr)
+		mlx_destroy_image(game.mlx_ptr, game.enemy_img.ptr);
 }
