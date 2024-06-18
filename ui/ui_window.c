@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:16:40 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:29:47 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,32 @@ void	ft_new_window(char **map, t_game *game)
 	game->exit_img = ft_load_image(*game, EXIT_PATH);
 }
 
-void	ft_display_hud(t_game game, int moves)
+void	ft_display_hud(t_game game, int moves, int points)
 {
 	char	*moves_str;
+	char	*points_str;
 	int		y;
 
 	moves_str = ft_itoa(moves);
 	if (!moves_str)
-		ft_destroy_game(game, 1);
+		return (ft_destroy_game(game, 1));
+	points_str = ft_itoa(points);
+	if (!points_str)
+		return (free(moves_str), ft_destroy_game(game, 1));
 	y = 0;
 	while (game.map[y])
 		y++;
 	mlx_set_font(game.mlx_ptr, game.win_ptr, "10x20");
 	mlx_string_put(game.mlx_ptr, game.win_ptr, 0.5 * SPRITE_SIZE,
 		y * SPRITE_SIZE + 22, 0xFFFFFF, "Moves:");
-	mlx_string_put(game.mlx_ptr, game.win_ptr, 2.5 * SPRITE_SIZE,
+	mlx_string_put(game.mlx_ptr, game.win_ptr, 2.6 * SPRITE_SIZE,
 		y * SPRITE_SIZE + 22, 0x47AA89, moves_str);
 	free(moves_str);
+	mlx_string_put(game.mlx_ptr, game.win_ptr, 4.5 * SPRITE_SIZE,
+		y * SPRITE_SIZE + 22, 0xFFFFFF, "Points:");
+	mlx_string_put(game.mlx_ptr, game.win_ptr, 6.9 * SPRITE_SIZE,
+		y * SPRITE_SIZE + 22, 0xDFDC3E, points_str);
+	free(points_str);
 }
 
 static void	ft_calculate_win_size(char **map, t_game *game)

@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:14:57 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:31:19 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_map_objs
 typedef struct s_player
 {
 	t_coord	pos;
-	int		points;
 	int		moves;
+	int		points;
 }	t_player;
 
 typedef struct s_sprite
@@ -121,7 +121,7 @@ void		ft_check_player_pos(t_player *player, t_game *game);
 
 // UI window
 void		ft_new_window(char **map, t_game *game);
-void		ft_display_hud(t_game game, int moves);
+void		ft_display_hud(t_game game, int moves, int points);
 
 // UI map
 void		ft_render_map(char **map, t_game game);

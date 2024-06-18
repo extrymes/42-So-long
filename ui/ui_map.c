@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 13:16:40 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/18 13:22:50 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_render_map(char **map, t_game game)
 		}
 		y++;
 	}
-	ft_display_hud(game, game.player.moves);
+	ft_display_hud(game, game.player.moves, game.player.points);
 }
 
 void	ft_update_map(char **map, t_game game, t_coord last_pos)
