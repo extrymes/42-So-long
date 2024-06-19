@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 07:05:42 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 12:20:39 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define START 'P'
 # define EXIT 'E'
 # define ENEMY 'X'
+# define ENEMY_MOVE 'M'
 # include </home/sabras/sgoinfre/minilibx/mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
