@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 07:12:53 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 07:29:17 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,21 @@ static int	ft_check_path(char **map_tab, char **map_copy);
 
 int	ft_check_map(char **map_tab, t_map map)
 {
-	char		**map_copy;
+	char	**map_copy;
+	int		res;
 
-	if (!ft_check_shape(map_tab))
-		return (ft_print_error("Bad map shape"), 0);
+	res = ft_check_shape(map_tab);
+	if (res == -1)
+		return (ft_print_error("Map too big"), 0);
+	if (res == 0)
+		return (ft_print_error("Invalid map shape"), 0);
 	if (!ft_check_borders(map_tab))
-		return (ft_print_error("Missing map border"), 0);
-	if (!ft_check_objects(map_tab, map))
-		return (ft_print_error("Bad map objects"), 0);
+		return (ft_print_error("Missing map border(s`)"), 0);
+	res = ft_check_objects(map_tab, map);
+	if (res == -1)
+		return (ft_print_error("Invalid map object(s)"), 0);
+	if (res == 0)
+		return (ft_print_error("Duplicate/missing start or exit"), 0);
 	if (map.collectibles == 0)
 		return (ft_print_error("Missing collectible(s)"), 0);
 	map_copy = ft_copy_map(map_tab);
@@ -55,7 +62,9 @@ static int	ft_check_shape(char **map_tab)
 			{
 				if (!len)
 					len = x;
-				if (x != len || x >= 60 || y >= 30)
+				if (x >= 60 || y >= 30)
+					return (-1);
+				if (x != len)
 					return (0);
 			}
 			x++;
@@ -108,7 +117,9 @@ static int	ft_check_objects(char **map_tab, t_map map)
 		}
 		y++;
 	}
-	if (map.starts != 1 || map.exits != 1 || map.others > 0)
+	if (map.others > 0)
+		return (-1);
+	if (map.starts != 1 || map.exits != 1)
 		return (0);
 	return (1);
 }
