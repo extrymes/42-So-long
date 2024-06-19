@@ -6,20 +6,20 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:14:13 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 11:35:56 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 06:20:18 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/libft.h"
 
-static char	**ft_realloc_map(char **map, int size);
+static char	**ft_realloc_map(char **map_tab, int size);
 static int	ft_check_file(char *file);
 static void	ft_remove_nl(char **line);
 
 char	**ft_read_map(char *file)
 {
-	char	**map;
+	char	**map_tab;
 	int		fd;
 	int		i;
 
@@ -28,39 +28,39 @@ char	**ft_read_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (ft_print_error("Unable to read file"), NULL);
-	map = NULL;
+	map_tab = NULL;
 	i = 0;
 	while (1)
 	{
-		map = ft_realloc_map(map, i);
-		if (!map)
+		map_tab = ft_realloc_map(map_tab, i);
+		if (!map_tab)
 			return (close(fd), NULL);
-		map[i] = get_next_line(fd);
-		if (!map[i])
+		map_tab[i] = get_next_line(fd);
+		if (!map_tab[i])
 			break ;
-		ft_remove_nl(&map[i]);
+		ft_remove_nl(&map_tab[i]);
 		i++;
 	}
-	return (close(fd), map);
+	return (close(fd), map_tab);
 }
 
-static char	**ft_realloc_map(char **map, int size)
+static char	**ft_realloc_map(char **map_tab, int size)
 {
 	char	**new_map;
 	int		i;
 
 	new_map = malloc((size + 1) * sizeof(char *));
 	if (!new_map)
-		return (ft_free_map(map, size), NULL);
+		return (ft_free_map(map_tab, size), NULL);
 	i = 0;
 	while (i < size)
 	{
-		new_map[i] = ft_strdup(map[i]);
+		new_map[i] = ft_strdup(map_tab[i]);
 		if (!new_map[i])
-			return (ft_free_map(map, size), ft_free_map(new_map, i), NULL);
+			return (ft_free_map(map_tab, size), ft_free_map(new_map, i), NULL);
 		i++;
 	}
-	return (ft_free_map(map, size), new_map);
+	return (ft_free_map(map_tab, size), new_map);
 }
 
 static int	ft_check_file(char *file)

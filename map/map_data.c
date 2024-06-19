@@ -6,27 +6,24 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:53:39 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 22:01:45 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 06:33:38 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static t_coord	ft_fetch_start(char **map);
-static t_coord	ft_fetch_exit(char **map);
-static int		ft_count_collectibles(char **map);
+static t_coord	ft_fetch_start(char **map_tab);
+static t_coord	ft_fetch_exit(char **map_tab);
+static int		ft_count_collectibles(char **map_tab);
 
-t_map_data	ft_get_map_data(char **map)
+void	ft_get_map_data(char **map_tab, t_map *map)
 {
-	t_map_data	map_data;
-
-	map_data.start_pos = ft_fetch_start(map);
-	map_data.exit_pos = ft_fetch_exit(map);
-	map_data.collectibles = ft_count_collectibles(map);
-	return (map_data);
+	map->start_pos = ft_fetch_start(map_tab);
+	map->exit_pos = ft_fetch_exit(map_tab);
+	map->collectibles = ft_count_collectibles(map_tab);
 }
 
-static t_coord	ft_fetch_start(char **map)
+static t_coord	ft_fetch_start(char **map_tab)
 {
 	t_coord	pos;
 	int		x;
@@ -34,12 +31,12 @@ static t_coord	ft_fetch_start(char **map)
 
 	pos = ft_new_coord();
 	y = 0;
-	while (map[y])
+	while (map_tab[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map_tab[y][x])
 		{
-			if (map[y][x] == START)
+			if (map_tab[y][x] == START)
 			{
 				pos.x = x;
 				pos.y = y;
@@ -52,7 +49,7 @@ static t_coord	ft_fetch_start(char **map)
 	return (pos);
 }
 
-static t_coord	ft_fetch_exit(char **map)
+static t_coord	ft_fetch_exit(char **map_tab)
 {
 	t_coord	pos;
 	int		x;
@@ -60,12 +57,12 @@ static t_coord	ft_fetch_exit(char **map)
 
 	pos = ft_new_coord();
 	y = 0;
-	while (map[y])
+	while (map_tab[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map_tab[y][x])
 		{
-			if (map[y][x] == EXIT)
+			if (map_tab[y][x] == EXIT)
 			{
 				pos.x = x;
 				pos.y = y;
@@ -78,7 +75,7 @@ static t_coord	ft_fetch_exit(char **map)
 	return (pos);
 }
 
-static int	ft_count_collectibles(char **map)
+static int	ft_count_collectibles(char **map_tab)
 {
 	int	collectibles;
 	int	x;
@@ -86,12 +83,12 @@ static int	ft_count_collectibles(char **map)
 
 	collectibles = 0;
 	y = 0;
-	while (map[y])
+	while (map_tab[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map_tab[y][x])
 		{
-			if (map[y][x] == COLLEC)
+			if (map_tab[y][x] == COLLEC)
 				collectibles++;
 			x++;
 		}

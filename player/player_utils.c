@@ -6,24 +6,24 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 05:21:43 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 22:04:49 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 07:05:29 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_get_player_pos(char **map, t_player *player)
+void	ft_get_player_pos(char **map_tab, t_player *player)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (map[y])
+	while (map_tab[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map_tab[y][x])
 		{
-			if (map[y][x] == 'P')
+			if (map_tab[y][x] == 'P')
 			{
 				player->pos.x = x;
 				player->pos.y = y;
@@ -34,20 +34,20 @@ void	ft_get_player_pos(char **map, t_player *player)
 	}
 }
 
-void	ft_check_player_pos(t_player *player, t_game *game)
+void	ft_check_player_pos(char **map_tab, t_player *player, t_game *game)
 {
-	if (game->map[player->pos.y][player->pos.x] == COLLEC)
+	if (map_tab[player->pos.y][player->pos.x] == COLLEC)
 	{
-		game->map[player->pos.y][player->pos.x] = FLOOR;
+		map_tab[player->pos.y][player->pos.x] = FLOOR;
 		player->points++;
 	}
-	else if (game->map[player->pos.y][player->pos.x] == EXIT
-		&& (player->points == game->map_data.collectibles))
+	else if (map_tab[player->pos.y][player->pos.x] == EXIT
+		&& (player->points == game->map.collectibles))
 	{
 		ft_print_you_win();
 		ft_destroy_game(*game, 0);
 	}
-	else if (game->map[player->pos.y][player->pos.x] == ENEMY)
+	else if (map_tab[player->pos.y][player->pos.x] == ENEMY)
 	{
 		ft_print_you_died();
 		ft_destroy_game(*game, 0);

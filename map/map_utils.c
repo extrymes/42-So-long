@@ -6,55 +6,55 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 14:34:10 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 06:20:49 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../includes/libft.h"
 
-char	**ft_copy_map(char **map)
+char	**ft_copy_map(char **map_tab)
 {
 	char	**map_copy;
 	int		i;
 
 	i = 0;
-	while (map[i])
+	while (map_tab[i])
 		i++;
 	map_copy = malloc((i + 1) * sizeof(char *));
 	if (!map_copy)
-		return (ft_free_map(map, -1), NULL);
+		return (ft_free_map(map_tab, -1), NULL);
 	i = 0;
-	while (map[i])
+	while (map_tab[i])
 	{
-		map_copy[i] = ft_strdup(map[i]);
+		map_copy[i] = ft_strdup(map_tab[i]);
 		if (!map_copy[i])
-			return (ft_free_map(map, -1), ft_free_map(map_copy, i), NULL);
+			return (ft_free_map(map_tab, -1), ft_free_map(map_copy, i), NULL);
 		i++;
 	}
 	map_copy[i] = NULL;
 	return (map_copy);
 }
 
-void	ft_browse_map(char **map, int x, int y)
+void	ft_browse_map(char **map_tab, int x, int y)
 {
-	if (map[y][x] == WALL || map[y][x] == ENEMY)
+	if (map_tab[y][x] == WALL || map_tab[y][x] == ENEMY)
 		return ;
-	map[y][x] = WALL;
-	ft_browse_map(map, x, y + 1);
-	ft_browse_map(map, x, y - 1);
-	ft_browse_map(map, x - 1, y);
-	ft_browse_map(map, x + 1, y);
+	map_tab[y][x] = WALL;
+	ft_browse_map(map_tab, x, y + 1);
+	ft_browse_map(map_tab, x, y - 1);
+	ft_browse_map(map_tab, x - 1, y);
+	ft_browse_map(map_tab, x + 1, y);
 }
 
-void	ft_free_map(char **map, int size)
+void	ft_free_map(char **map_tab, int size)
 {
 	int	i;
 
-	if (!map)
+	if (!map_tab)
 		return ;
 	i = 0;
-	while ((size != -1 && i < size) || (size == -1 && map[i]))
-		free(map[i++]);
-	free(map);
+	while ((size != -1 && i < size) || (size == -1 && map_tab[i]))
+		free(map_tab[i++]);
+	free(map_tab);
 }
