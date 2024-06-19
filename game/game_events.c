@@ -1,12 +1,12 @@
 /* ************************************************************************** */
-/*			                                                                */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   game_events.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:09:48 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/13 10:45:46 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 03:44:08 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	ft_handle_keypress(int keysym, t_game *game)
 		ft_destroy_game(*game, 0);
 	else if (ft_player_move(&game->player, game->map, keysym))
 	{
+		ft_move_enemies(game->map);
 		ft_check_player_pos(&game->player, game);
 		ft_render_map(game->map, *game);
 	}

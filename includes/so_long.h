@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 22:04:49 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 03:29:17 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # include <X11/X.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <time.h>
+# include <math.h>
 
 typedef struct s_coord
 {
@@ -97,6 +99,9 @@ t_map_objs	ft_new_objs(void);
 
 // Game events
 void		ft_handle_events(t_game game);
+
+// Game enemies
+void		ft_move_enemies(char **map);
 
 // Game utils
 void		ft_destroy_game(t_game game, int status);

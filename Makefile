@@ -3,7 +3,7 @@ NAME = so_long
 SRCS = 	so_long.c
 
 GAME_DIR = game
-GAME_FILES = game_events.c game_structs.c game_utils.c
+GAME_FILES = game_events.c game_enemies.c game_structs.c game_utils.c
 GAME_SRCS = $(addprefix $(GAME_DIR)/,$(GAME_FILES))
 
 MAP_DIR = map
@@ -56,7 +56,7 @@ $(LIBFT):
 	@echo "$(GREEN)Library $(LIBFT_FILE) successfully built!$(RESET)"
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) -o $(NAME) $^ $(MINILIBX_FLAGS)
+	@$(CC) -lm -o $(NAME) $^ $(MINILIBX_FLAGS)
 	@echo "$(GREEN)Executable $(NAME) successfully created!$(RESET)"
 
 clean:
