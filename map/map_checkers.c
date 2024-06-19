@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:18:07 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 07:12:53 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	ft_check_shape(char **map_tab)
 			{
 				if (!len)
 					len = x;
-				if (x != len)
+				if (x != len || x >= 60 || y >= 30)
 					return (0);
 			}
 			x++;
