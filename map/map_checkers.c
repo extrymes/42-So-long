@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:51:57 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 11:42:41 by sabras           ###   ########.fr       */
+/*   Updated: 2024/06/19 13:21:56 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ int	ft_check_map(char **map_tab, t_map map)
 	char	**map_copy;
 	int		res;
 
-	res = ft_check_shape(map_tab);
-	if (res == -1)
-		return (ft_print_error("Map too big"), 0);
-	if (res == 0)
+	if (!ft_check_shape(map_tab))
 		return (ft_print_error("Invalid map shape"), 0);
 	if (!ft_check_borders(map_tab))
 		return (ft_print_error("Missing map border(s)"), 0);
@@ -62,9 +59,7 @@ static int	ft_check_shape(char **map_tab)
 			{
 				if (!len)
 					len = x;
-				if (x >= 60 || y >= 30)
-					return (-1);
-				if (x != len)
+				if (x != len || x >= 60 || y >= 30)
 					return (0);
 			}
 			x++;
