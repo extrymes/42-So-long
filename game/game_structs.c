@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:23:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:56:48 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:26:50 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 t_game	ft_init_game(void)
 {

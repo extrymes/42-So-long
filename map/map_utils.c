@@ -6,12 +6,12 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:39:17 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:20:49 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:27:27 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-#include "../includes/libft.h"
+#include "so_long.h"
+#include "libft.h"
 
 char	**ft_copy_map(char **map_tab)
 {

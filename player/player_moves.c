@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 16:37:54 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:25:48 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/05 15:57:47 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 static int	ft_move_up(t_player *player, char **map);
 static int	ft_move_down(t_player *player, char **map);
@@ -20,10 +20,10 @@ static int	ft_move_right(t_player *player, char **map);
 int	ft_player_move(t_player *player, char **map_tab, int keysym)
 {
 	const t_move_keys	keys[] = {
-	{XK_w, ft_move_up},
-	{XK_s, ft_move_down},
-	{XK_a, ft_move_left},
-	{XK_d, ft_move_right}
+	{KEY_W, ft_move_up},
+	{KEY_S, ft_move_down},
+	{KEY_A, ft_move_left},
+	{KEY_D, ft_move_right}
 	};
 	int					size;
 	int					i;

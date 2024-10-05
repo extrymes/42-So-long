@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 15:18:49 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:57:22 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:44:44 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	ft_destroy_game(t_game game, int status)
 {
@@ -19,7 +19,7 @@ void	ft_destroy_game(t_game game, int status)
 		mlx_destroy_window(game.mlx_ptr, game.win_ptr);
 	if (game.mlx_ptr)
 	{
-		mlx_destroy_display(game.mlx_ptr);
+		DESTROY_DISPLAY(game.mlx_ptr);
 		free(game.mlx_ptr);
 	}
 	ft_free_map(game.map.tab, -1);

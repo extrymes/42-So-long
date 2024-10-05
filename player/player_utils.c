@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 05:21:43 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 07:05:29 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:27:06 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 void	ft_get_player_pos(char **map_tab, t_player *player)
 {

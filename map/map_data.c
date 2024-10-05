@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:53:39 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:33:38 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:27:17 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 static t_coord	ft_fetch_start(char **map_tab);
 static t_coord	ft_fetch_exit(char **map_tab);

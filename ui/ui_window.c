@@ -6,12 +6,12 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:52:50 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:57:13 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/05 09:15:02 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-#include "../includes/libft.h"
+#include "so_long.h"
+#include "libft.h"
 
 static void	ft_calculate_win_size(char **map, t_game *game);
 
@@ -50,7 +50,7 @@ void	ft_display_hud(t_game game, int moves, int points)
 	y = 0;
 	while (game.map.tab[y])
 		y++;
-	mlx_set_font(game.mlx_ptr, game.win_ptr, "10x20");
+	SET_FONT(game.mlx_ptr, game.win_ptr, "10x20");
 	mlx_string_put(game.mlx_ptr, game.win_ptr, 0.5 * SPRITE_SIZE,
 		y * SPRITE_SIZE + 22, 0xFFFFFF, "Moves:");
 	mlx_string_put(game.mlx_ptr, game.win_ptr, 2.6 * SPRITE_SIZE,

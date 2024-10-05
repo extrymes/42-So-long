@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 03:13:28 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 12:25:29 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:26:46 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 static int	ft_move_random(char **map_tab, int x, int y);
 static void	ft_place_enemies(char **map_tab);

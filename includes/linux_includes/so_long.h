@@ -6,7 +6,7 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:00:56 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 12:20:39 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/05 15:57:47 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,18 @@
 # define EXIT 'E'
 # define ENEMY 'X'
 # define ENEMY_MOVE 'M'
-# include </home/sabras/sgoinfre/minilibx/mlx.h>
+# define KEY_ESC XK_Escape
+# define KEY_W XK_w
+# define KEY_A XK_a
+# define KEY_D XK_d
+# define KEY_S XK_s
+# define KEYPRESS KeyPress
+# define KEYPRESSMASK KeyPressMask
+# define DESTROYNOTIFY DestroyNotify
+# define STRUCTURENOTIFYMASK StructureNotifyMask
+# define DESTROY_DISPLAY(mlx_ptr) mlx_destroy_display(mlx_ptr)
+# define SET_FONT(mlx_ptr, win_ptr, font) mlx_set_font(mlx_ptr, win_ptr, font)
+# include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <fcntl.h>

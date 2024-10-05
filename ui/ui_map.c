@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 10:04:52 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:56:48 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:45:16 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 static void	ft_put_image(t_game game, char obj, int x, int y);
 

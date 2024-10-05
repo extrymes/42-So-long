@@ -6,12 +6,12 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 09:02:00 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/19 06:33:29 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/04 21:41:40 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
-#include "includes/libft.h"
+#include "so_long.h"
+#include "libft.h"
 
 int	main(int ac, char **av)
 {
