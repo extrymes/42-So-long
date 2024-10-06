@@ -1,5 +1,4 @@
 NAME = so_long
-MACOS = so_long_macos
 
 GAME_DIR = game
 MAP_DIR = map
@@ -27,9 +26,6 @@ MLX_LINUX = mlx_linux/libmlx.a
 MLX_MACOS = mlx_macos/libmlx.a
 LIBFT = libft/libft.a
 
-MLX_LINUX_FLAGS = -L mlx_linux -l mlx -l Xext -l X11
-MLX_MACOS_FLAGS = -L mlx_macos -l mlx -framework OpenGL -framework AppKit
-
 CFLAGS = -Wall -Wextra -Werror -g
 CC = cc $(CFLAGS)
 
@@ -45,11 +41,20 @@ MAGENTA = \033[35m
 CYAN = \033[36m
 RESET = \033[0m
 
-all: INCLUDES += -I mlx_linux -I includes/linux_includes
-macos: INCLUDES += -I mlx_macos -I includes/macos_includes
+UNAME_S = $(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+    INCLUDES += -I mlx_linux -I includes/linux_includes
+    MFLAGS = -L mlx_linux -l mlx -l Xext -l X11 -lm -lz
+    MLX = $(MLX_LINUX)
+else ifeq ($(UNAME_S), Darwin)
+    INCLUDES += -I mlx_macos -I includes/macos_includes
+    MFLAGS = -L mlx_macos -l mlx -framework OpenGL -framework AppKit
+    MLX = $(MLX_MACOS)
+else
+    $(error Operating system not supported)
+endif
 
-all: $(MLX_LINUX) $(LIBFT) $(NAME)
-macos: $(MLX_MACOS) $(LIBFT) $(MACOS)
+all: $(MLX) $(LIBFT) $(NAME)
 
 $(BIN_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
@@ -73,17 +78,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "\n$(YELLOW)Linking objects...$(RESET)"
-	@$(CC) -lm -o $(NAME) $^ $(MLX_LINUX_FLAGS)
-	@echo "$(BLUE)Progress: 100%$(RESET)"
-	@echo "$(GREEN)Compilation complete!$(RESET)"
-	@echo "\n\
-	█▀▀ █▀▀█  $(YELLOW)█░░ █▀▀█ █▀▀▄ █▀▀▀$(RESET)\n\
-	▀▀█ █░░█  $(YELLOW)█░░ █░░█ █░░█ █░▀█$(RESET)\n\
-	▀▀▀ ▀▀▀▀  $(YELLOW)▀▀▀ ▀▀▀▀ ▀░░▀ ▀▀▀▀$(RESET)\n"
-
-$(MACOS): $(OBJS) $(LIBFT)
-	@echo "\n$(YELLOW)Linking objects...$(RESET)"
-	@$(CC) -lm -o $(MACOS) $^ $(MLX_MACOS_FLAGS)
+	@$(CC) $(MFLAGS) -o $(NAME) $^
 	@echo "$(BLUE)Progress: 100%$(RESET)"
 	@echo "$(GREEN)Compilation complete!$(RESET)"
 	@echo "\n\
@@ -101,11 +96,10 @@ clean:
 
 fclean: clean
 	@echo "$(BLUE)Complete cleanup..."
-	@rm -f $(NAME) $(MACOS)
+	@rm -f $(NAME)
 	@make fclean -s -C libft
 	@echo "$(GREEN)Cleaning complete!$(RESET)"
 
 re: fclean all
-re_macos: fclean macos
 
-.PHONY: all clean fclean re macos re_macos
+.PHONY: all clean fclean re
