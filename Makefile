@@ -78,7 +78,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "\n$(YELLOW)Linking objects...$(RESET)"
-	@$(CC) $(MFLAGS) -o $(NAME) $^
+	@$(CC) -o $(NAME) $^ $(MFLAGS)
 	@echo "$(BLUE)Progress: 100%$(RESET)"
 	@echo "$(GREEN)Compilation complete!$(RESET)"
 	@echo "\n\
