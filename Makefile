@@ -45,6 +45,17 @@ MAGENTA = \033[35m
 CYAN = \033[36m
 RESET = \033[0m
 
+all: INCLUDES += -I mlx_linux -I includes/linux_includes
+macos: INCLUDES += -I mlx_macos -I includes/macos_includes
+
+all: $(MLX_LINUX) $(LIBFT) $(NAME)
+macos: $(MLX_MACOS) $(LIBFT) $(MACOS)
+
+$(BIN_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@echo "$(CYAN)Compiling $<...$(RESET)"
+	@$(CC) $(INCLUDES) -c $< -o $@
+
 $(MLX_LINUX):
 	@echo "$(YELLOW)Building minilibx...$(RESET)"
 	@make -s -C mlx_linux
@@ -59,17 +70,6 @@ $(LIBFT):
 	@echo "$(YELLOW)Building libft...$(RESET)"
 	@make -s -C libft
 	@echo "$(GREEN)Building complete!$(RESET)"
-
-$(BIN_DIR)/%.o: %.c
-	@mkdir -p $(dir $@)
-	@echo "$(CYAN)Compiling $<...$(RESET)"
-	@$(CC) $(INCLUDES) -c $< -o $@
-
-all: INCLUDES += -I mlx_linux -I includes/linux_includes
-macos: INCLUDES += -I mlx_macos -I includes/macos_includes
-
-all: $(MLX_LINUX) $(LIBFT) $(NAME)
-macos: $(MLX_MACOS) $(LIBFT) $(MACOS)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "\n$(YELLOW)Linking objects...$(RESET)"
