@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 13:44:09 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/17 17:52:51 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/06 02:06:11 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 static size_t	ft_calcul_size(long nbr)
 {

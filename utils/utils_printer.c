@@ -6,12 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:06:05 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/18 22:04:49 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/06 02:07:35 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-#include "../includes/colors.h"
+#include "libft.h"
 
 void	ft_print_you_win(void)
 {

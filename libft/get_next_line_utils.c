@@ -6,11 +6,11 @@
 /*   By: sabras <sabras@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:22:59 by sabras            #+#    #+#             */
-/*   Updated: 2024/06/06 12:18:03 by sabras           ###   ########.fr       */
+/*   Updated: 2024/10/06 02:06:20 by sabras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int	ft_find_new_line(char *tab, int bytes_read)
 {

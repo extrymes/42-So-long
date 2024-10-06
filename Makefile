@@ -33,7 +33,7 @@ MLX_MACOS_FLAGS = -L mlx_macos -l mlx -framework OpenGL -framework AppKit
 CFLAGS = -Wall -Wextra -Werror -g
 CC = cc $(CFLAGS)
 
-INCLUDES = -I includes
+INCLUDES = -I libft
 
 BOLD = \033[1m
 GRAY = \033[30m
@@ -65,6 +65,12 @@ $(BIN_DIR)/%.o: %.c
 	@echo "$(CYAN)Compiling $<...$(RESET)"
 	@$(CC) $(INCLUDES) -c $< -o $@
 
+all: INCLUDES += -I mlx_linux -I includes/linux_includes
+macos: INCLUDES += -I mlx_macos -I includes/macos_includes
+
+all: $(MLX_LINUX) $(LIBFT) $(NAME)
+macos: $(MLX_MACOS) $(LIBFT) $(MACOS)
+
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "\n$(YELLOW)Linking objects...$(RESET)"
 	@$(CC) -lm -o $(NAME) $^ $(MLX_LINUX_FLAGS)
@@ -84,12 +90,6 @@ $(MACOS): $(OBJS) $(LIBFT)
 	█▀▀ █▀▀█  $(YELLOW)█░░ █▀▀█ █▀▀▄ █▀▀▀$(RESET)\n\
 	▀▀█ █░░█  $(YELLOW)█░░ █░░█ █░░█ █░▀█$(RESET)\n\
 	▀▀▀ ▀▀▀▀  $(YELLOW)▀▀▀ ▀▀▀▀ ▀░░▀ ▀▀▀▀$(RESET)\n"
-
-all: INCLUDES += -I mlx_linux -I includes/linux_includes
-macos: INCLUDES += -I mlx_macos -I includes/macos_includes
-
-all: $(MLX_LINUX) $(LIBFT) $(NAME)
-macos: $(MLX_MACOS) $(LIBFT) $(MACOS)
 
 clean:
 	@echo "$(BLUE)Cleaning objects...$(RESET)"
