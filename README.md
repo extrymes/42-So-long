@@ -19,6 +19,10 @@ make
 ```
 The map file must be in `.ber` format, as indicated in the so_long specifications.
 
+## Controls
+- `W`, `S`, `A`, `D` to move the player
+- `ESC` to exit the game
+
 ## Map requirements
 Maps must conform to so_long specifications, which are the following:
 - The map must be composed of **only 6 possible characters**: `0` for an empty space, `1` for a wall, `C` for a collectible, `X` for an enemy, `P` for the player's starting position and `E` for the exit.
